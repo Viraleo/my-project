@@ -1,0 +1,1385 @@
+from math import factorial
+def compute_binom(n, k):
+    return factorial(n)//(factorial(k)*factorial(n - k))
+# считываем данные
+n = int(input())
+k = int(input())
+# вызываем функцию
+print(compute_binom(n, k))
+___________________________________________
+def draw_triangle():
+    for i in range(10):
+        print("*"*(i+1))
+
+# основная программа
+draw_triangle()
+
+def draw_box():
+    print("*"*10)
+    for i in range(12):
+        print("*"," "*6,"*")
+    print("*"*10)
+# основная программа
+draw_box()
+
+def draw_box():
+    print('*'*10 + '\n' + ('*' + ' '*8 + '*\n')*12 + '*'*10)
+# основная программа
+draw_box() 
+______________________________
+# объявление функции
+def draw_triangle(fill, base):
+
+    for i in range(1,base//2+2):
+        print(fill*i, end ="")
+        print()
+    for j in range(base//2,0,-1):
+        print(fill * j, end='')
+        print()
+
+fill = input()
+base = int(input())
+# вызываем функцию
+draw_triangle(fill, base) 
+
+def draw_triangle(fill, base):
+    for i in range(1, base + 1):
+        print(fill * min(i, base - i + 1))
+# считываем данные
+fill = input()
+base = int(input())
+# вызываем функцию
+draw_triangle(fill, base)
+________________________________________
+# объявление функции
+def draw_triangle():
+    for i in range(8):
+        print(" " * (8-1-i) + '*' *(1+i*2) )
+# основная программа
+draw_triangle()
+
+def draw_triangle():
+    for n in range(8):
+        print(' '*(7-n)+'*'*(2*n+1))
+________________________
+def print_fio( surname,name, patronymic):
+    print(surname[0],name[0], patronymic[0], sep = "")
+# считываем данные
+name, surname, patronymic = input().title(), input().title(), input().title()
+# вызываем функцию
+print_fio( surname,name, patronymic)
+___________________________________
+def print_digit_sum(num):
+    ls1=[ int(i)  for  i  in  str(num) ]
+    print(sum(ls1))
+# считываем данные
+n = input()
+# вызываем функцию
+print_digit_sum(n)
+____________________________________________
+vosvratnaya funksia
+# объявление функции
+def get_days(month):
+    ls31 = [1,3,5,7,8,10,12]
+    ls30 = [4,6,9,11]
+    if month in ls31:
+        return 31
+    elif month in ls30:
+        return 30
+    else:
+        return 28
+# считываем данные
+num = int(input())
+# вызываем функцию
+print(get_days(num))
+
+def get_days(month):
+    return (28 if month == 2 else 30 if month in [4, 6, 9, 11] else 31)
+num = int(input()) # считываем данные
+print(get_days(num)) # вызываем функцию
+______________
+# объявление функции
+def get_factors(num):
+    mylist=[]
+    for i in range(1, n+1):
+        if n%i==0:
+            mylist.append(i)
+    return(mylist)
+# считываем данные
+n = int(input())
+# вызываем функцию
+print(get_factors(n))
+
+def get_factors(num):
+    return [n for n in range(1, num + 1) if num % n == 0]       
+n = int(input())
+print(get_factors(n))
+
+# объявление функции
+def number_of_factors(num):
+    return [n for n in range(1, num + 1) if num % n == 0] 
+# считываем данные
+n = int(input())
+# вызываем функцию
+print(len(number_of_factors(n)))
+
+def get_factors(num):
+    return [i for i in range(1, num +1) if num xs]
+
+def number_of_factors():
+    return len(get_factors(num))
+# считываем данные
+n = int(input())
+# вызываем функцию
+print(number_of_factors())
+__________________________________
+def find_all(target, symbol):
+    ls =[]
+    for i in range(len(s)):
+        if target[i]==symbol:
+            ls.append(i)
+    return ls 
+# считываем данные
+s = input()
+char = input()
+# вызываем функцию
+print(find_all(s, char))
+
+return [i for i in range(len(target)) if target[i] == symbol]
+# объявление функции
+def merge(list1, list2):
+    ls3 = list1+list2
+    ls3.sort()
+    return(ls3)
+# считываем данные
+numbers1 = [int(c) for c in input().split()]
+numbers2 = [int(c) for c in input().split()]
+# вызываем функцию
+print(merge(numbers1, numbers2))
+________________________________
+def quick_merge(list1, list2):
+    result = []
+    p1 = 0  # указатель на первый элемент списка list1
+    p2 = 0  # указатель на первый элемент списка list2
+    while p1 < len(list1) and p2 < len(list2):  # пока не закончился хотя бы один список
+        if list1[p1] <= list2[p2]:
+            result.append(list1[p1])
+            p1 += 1
+        else:
+            result.append(list2[p2])
+            p2 += 1
+    if p1 < len(list1):   # прицепление остатка
+        result += list1[p1:]
+    if p2 < len(list2):
+        result += list2[p2:]
+      return result
+___________________________________________
+def is_valid_triangle(side1, side2, side3):
+    if a+b>c and a+c>b and c+b>a:
+        return True
+    else: 
+        return False
+# считываем данные
+a, b, c = int(input()), int(input()), int(input())
+# вызываем функцию
+print(is_valid_triangle(a, b, c))
+______________________________________
+def is_password_good(password):
+    count = 0
+    if len(password)>=8:
+        count+=1   
+        if password != password.upper():
+                count+=1
+        if password != password.lower():    
+            count+=1
+        for i in password:
+            if i in "0123456789":
+                count+=1
+                break
+    if count==4:            
+        return True
+    else:
+        return False
+# считываем данные
+txt = input()
+# вызываем функцию
+print(is_password_good(txt))
+
+def is_password_good(password):
+    upp = [i for i in password if i.isupper()]
+    low = [i for i in password if i.islower()]
+    dig = [i for i in password if i.isdigit()]
+    return all([len(password) >= 8, upp, low, dig])
+txt = input()
+print(is_password_good(txt))
+
+def is_password_good(password):
+  if len(password) < 8:
+    return False
+  if password.isupper() or password.islower() or password.isalpha() or password.isdigit():
+    return False  
+  return True
+txt = input()
+print(is_password_good(txt))
+_________________________________
+# объявление функции
+def is_one_away(word1, word2):
+    count = 0
+    if len(word1) != len(word2):
+        return False
+    for i in range(0, len(word1)):
+        if word1[i] !=word2[i]:
+                count+=1
+    if count==0 or count>=2:
+        return False
+    else: 
+        return True
+# считываем данные
+txt1 = input()
+txt2 = input()
+# вызываем функцию
+print(is_one_away(txt1, txt2))
+
+def is_one_away(word1, word2):
+    return len([i for i in word1 if i not in word2]) == 1 and len(word1) == len(word2)
+
+def is_one_away(word1, word2):
+    a = 0
+    for i in range(len(word1)):
+        if word1[i] != word2[i]:
+            a += 1
+    return len(word1) == len(word2) and a == 1
+_________________________________________
+def is_palindrome(text):
+    text1 = "".join(i for i in text if i.isalpha())
+    if text1.lower()==text1.lower()[::-1]:
+        return True
+    else:
+        return False
+# считываем данные
+txt = input()
+# вызываем функцию
+print(is_palindrome(txt))
+
+def is_palindrome(text):
+    text = [i.lower() for i in text if i not in (',.!?- ')]
+    return text == text[::-1]
+
+def is_palindrome(text):
+    p = []
+    for c in text:
+        if c.isalpha(): p.append(c.lower())
+    return p == p[::-1]
+___________________________
+def is_prime(num):
+    for i in range(2, int(num ** 0.5) + 1):
+        if num % i  == 0:
+            return False
+    return True if num != 1 else False
+
+def get_next_prime(num):
+    x=num+1
+    while is_prime(x)==False:
+        x+=1
+    return x
+# считываем данные
+n = int(input())
+# вызываем функцию
+print(get_next_prime(n))
+
+# объявление функции
+def get_next_prime(num):
+    for i in range(n+1, 2*n+1):
+        count = 0
+        for j in range(1, i+1):
+            if i%j == 0:
+                count += 1
+        if count == 2:
+            break
+    return i
+# считываем данные
+n = int(input())
+# вызываем функцию
+print(get_next_prime(n))
+
+# объявление функции
+def get_next_prime(num):
+    n = num + 1
+    while True:  # Есть граница, выше которой не надо
+        # Запускаем перебор для проверки на делимость
+        for i in range(2, n):  # От единицы до нашего числа включительно!
+            if n % i == 0:# Если нет остатка, то есть,число делится на что-то
+                n += 1  # Добавляем единицу
+                break  # Прерываем цикл
+        else:  # Доперли до конца цикла
+            return n  # Значит, наше число простое
+# считываем данные
+n = int(input())
+# вызываем функцию
+print(get_next_prime(n))
+def get_next_prime(num):
+    while True:
+        num += 1
+        if len([i for i in range(1, num+1) if num % i == 0]) == 2:
+            return num
+
+n = int(input())
+print(get_next_prime(n))
+___________________________
+# объявление функции
+def is_valid_password(password):
+    ls = [i for i in password.split(":")]
+    if len(ls)>3:
+        return False
+    a=ls[0]
+    b=int(ls[1])
+    c=int(ls[2])
+    count=0
+    if a == a[::-1]:
+        flag=True
+    else:
+        return False
+    for i in range(2, (b + 1) // 2 + 1):
+        if b % i  == 0:
+            return False
+        else: 
+            flag = True
+    if c % 2 == 0 :
+        return True
+    else:
+        return False 
+# считываем данные
+psw = input()
+# вызываем функцию
+print(is_valid_password(psw))
+
+def is_valid_password(password):
+    password = password.split(':')
+    a, b, c = password[0], int(password[1]), int(password[2])
+    if len(password) != 3 or a != a[::-1] or c % 2 != 0:
+        return False
+    for i in range(2, b):
+        if b % i == 0:
+            return False
+    return True   
+ psw = input()
+print(is_valid_password(psw))
+
+def is_valid_password(password):    password = password.split(':')    return len(password) == 3\    and password[0] == password[0][::-1]\    and int(password[2]) % 2 == 0\    and (len([i for i in range(1, int(password[1])+1) if int(password[1]) % i == 0]) == 2)
+# считываем данныеpsw = input()
+# вызываем функциюprint(is_valid_password(psw))
+
+
+ef is_valid_password(password):
+    box = password.split(':')
+    if len(box) == 3:
+        a = box[0]
+        b = int(box[1])
+        c = int(box[2])
+        return a == a[::-1] and len([i for i in range(1, b+1) if b % i == 0]) == 2 and c % 2 == 0
+    else:
+        return False
+text = input()
+print(is_valid_password(text))
+_______________________________
+def is_correct_bracket(text):
+    n=[]
+    for j in text.split():
+        n.extend(j)
+    count = 0
+    x = "("
+    y = ")"
+    for i in n :
+        if count<0: 
+            return False
+        elif i == x :
+            count+=1
+        elif i == y:
+            count-=1
+    if count>0:
+        return False
+    else:
+        return True
+txt = input()
+# вызываем функцию
+print(is_correct_bracket(txt))
+__________________________________
+def get_next_prime(num):
+    while True:
+        num += 1
+        if len([i for i in range(1, num+1) if num % i == 0]) == 2:
+            return num
+
+n = int(input())
+print(get_next_prime(n))
+___________________________
+# объявление функции
+def is_valid_password(password):
+    ls = [i for i in password.split(":")]
+    if len(ls)>3:
+        return False
+    a=ls[0]
+    b=int(ls[1])
+    c=int(ls[2])
+    count=0
+    if a == a[::-1]:
+        flag=True
+    else:
+        return False
+    for i in range(2, (b + 1) // 2 + 1):
+        if b % i  == 0:
+            return False
+        else: 
+            flag = True
+    if c % 2 == 0 :
+        return True
+    else:
+        return False 
+# считываем данные
+psw = input()
+# вызываем функцию
+print(is_valid_password(psw))
+
+def is_valid_password(password):
+    password = password.split(':')
+    a, b, c = password[0], int(password[1]), int(password[2])
+    if len(password) != 3 or a != a[::-1] or c % 2 != 0:
+        return False
+    for i in range(2, b):
+        if b % i == 0:
+            return False
+    return True   
+ psw = input()
+print(is_valid_password(psw))
+
+def is_valid_password(password):    
+    password = password.split(':') 
+    return len(password) == 3\    
+    and password[0] == password[0][::-1]\     and int(password[2]) % 2 == 0\     and (len([i for i in range(1, int(password[1])+1) if int(password[1]) % i == 0]) == 2)
+# считываем данные psw = input()
+# вызываем функцию print(is_valid_password(psw))
+
+
+ef is_valid_password(password):
+    box = password.split(':')
+    if len(box) == 3:
+        a = box[0]
+        b = int(box[1])
+        c = int(box[2])
+        return a == a[::-1] and len([i for i in range(1, b+1) if b % i == 0]) == 2 and c % 2 == 0
+    else:
+        return False
+text = input()
+print(is_valid_password(text))
+_______________________________
+def is_correct_bracket(text):
+    n=[]
+    for j in text.split():
+        n.extend(j)
+    count = 0
+    x = "("
+    y = ")"
+    for i in n :
+        if count<0: 
+            return False
+        elif i == x :
+            count+=1
+        elif i == y:
+            count-=1
+    if count>0:
+        return False
+    else:
+        return True
+txt = input()
+# вызываем функцию
+print(is_correct_bracket(txt))
+__________________________________
+def convert_to_python_case(text):
+    s = text[0].lower()
+    for i in text[1::]:
+        if i.isupper() and i not in "0123456789":
+            s = s+"_"+i.lower()
+        else:
+            s+=i    
+    return s
+# считываем данные
+txt = input()
+# вызываем функцию
+print(convert_to_python_case(txt))
+
+def convert_to_python_case(text):
+    return ''.join(['_' + i if i.isupper() else i for i in text]).lstrip('_').lower()
+txt = input()
+# вызываем функцию
+print(convert_to_python_case(txt))
+____________________
+# объявление функции
+def is_magic(date):
+    x = [ i for i in date.split(".")]
+    a = int(x[0])
+    b = int(x[1])
+    c = int(x[2][-2:])
+    if a*b == c:
+        return True
+    else: 
+        return False
+# считываем данные
+date = input()
+# вызываем функцию
+print(is_magic(date))
+
+def is_magic(date):
+    return int(date[:2]) * int(date[3:5]) == int(date[-2:])
+______________________________
+def is_pangram(text):
+    count=0
+    for i in range(97,123):
+        if chr(i) in text:
+            count+=1
+    if count == 26:
+        return True 
+    else: 
+        return False  
+# считываем данные
+text = input().lower()
+# вызываем функцию
+print(is_pangram(text))
+
+def is_pangram(text):
+    return all(c in text.lower() for c in "abcdefghijklmnopqrstuvwxyz")
+________________________
+def number_to_words(num):
+    s = ['один', 'два', 'три', 'четыре', 'пять', 'шесть', 'семь', 'восемь', 'девять', 'десять', 'одиннадцать', 'двенадцать', 'тринадцать', 'четырнадцать', 'пятнадцать', 'шестнадцать', 'семнадцать', 'восемнадцать', 'девятнадцать', 'двадцать', 'тридцать', 'сорок', 'пятьдесят', 'шестьдесят', 'семьдесят', 'восемьдесят', 'девяносто','']
+    if num <= 20:
+        return s[num - 1]
+    else:
+        return s[num // 10 - 1 + 18] + ' ' + s[num % 10 - 1]
+# считываем данные
+n = int(input())
+
+# вызываем функцию
+print(number_to_words(n))
+
+def number_to_words(num):
+    l1 = ['один', 'два', 'три', 'четыре', 'пять', 'шесть', 'семь', 'восемь', 'девять']
+    l2 = ['десять', 'двадцать', 'тридцать', 'сорок', 'пятьдесят', 'шестьдесят', 'семьдесят', 'восемьдесят', 'девяносто']
+    l3 = ['одиннадцать', 'двенадцать', 'тринадцать', 'четырнадцать', 'пятнадцать', 'шестнадцать', 'семнадцать',
+          'восемнадцать', 'девятнадцать']
+    if num <= 9:
+        return l1[num - 1]
+    elif num % 10 == 0:
+        return l2[num // 10 - 1]
+    elif 11 <= num <= 19:
+        return l3[num % 10 - 1]
+    else:
+        return l2[num // 10 - 1] + ' ' + l1[num % 10 - 1]
+
+def number_to_words(num):
+    l1 = ['один', 'два', 'три', 'четыре', 'пять', 'шесть', 'семь', 'восемь', 'девять']
+    l2 = ['десять', 'двадцать', 'тридцать', 'сорок', 'пятьдесят', 'шестьдесят', 'семьдесят', 'восемьдесят', 'девяносто']
+    l3 = ['одиннадцать', 'двенадцать', 'тринадцать', 'четырнадцать', 'пятнадцать', 'шестнадцать', 'семнадцать',
+          'восемнадцать', 'девятнадцать']
+if num <= 9:
+    return l1[num - 1]
+elif num % 10 == 0:
+    return l2[num // 10 - 1]
+elif 11 <= num <= 19:
+    return l3[num % 10 - 1]
+else:
+    return l2[num // 10 - 1] + ' ' + l1[num % 10 - 1]
+_______________________________
+def parabola(a, b, c):
+    x = (-(b/(2*a)), (((4*a*c)-b**2))/4/a)
+    return x
+a = int(input())
+b = int(input())
+c = int(input())    
+print(parabola(a, b, c))
+
+def vertex(a, b, c):
+    return -b / 2 / a, (4 * a * c - b * b) / 4 / a   
+print(vertex(int(input()), int(input()), int(input())))
+_________________________________
+grand common divider  nod
+def gcd(a,b):
+    return a if b == 0 else gcd(b,a%b)
+_________________________
+def f(n:int):# factorial neotricatelnux chisel
+    assert n >= 0
+    if n == 0:
+        return 1
+    else:
+        return f(n-1)*n
+
+есть метод reduce (от англ. сокращать), примерно это он и делает, сокращает (сводит к одному значению) вашу последовательность (в данном случае список) по правилу, которое вы зададите первым параметром (в данном случае перемножает все элементы последовательности между собой)
+from functools import reduce
+def factorial(x):
+    return reduce(lambda y, m: y * m, [i for i in range(1, x + 1)]) if x>1 else 1
+__________________________________
+def matryoshka(n):
+    if n == 1:
+        print("matryoshka ready")
+    else:
+        print("verx matryoshki n =", n)
+        matryoshka(n-1)
+        print("nis matryoshki n =", n)        
+matryoshka(5)
+__________________________
+import graphics as gr
+window = gr. GraphWin("Russian game", 600,600)
+alpha = 0.2
+def fractal_rectangle(A, B, C, D, deep = 10):
+    if deep < 1:
+        return
+    for m, n in (A, B), (B, C), (C, D), (D, A):
+        gr.Line(gr.Point(*m), gr.Point(*n)).draw(window)
+    A1 = (A[0]) * (1-alpha) + B[0]*alpha, A1 = (A[1])* (1-alpha) + B[1]*alpha
+    B1 = (B[0]) * (1-alpha) + C[0]*alpha, B1 = (B[1])* (1-alpha) + C[1]*alpha
+    C1 = (C[0]) * (1-alpha) + D[0]*alpha, C1 = (C[1])* (1-alpha) + D[1]*alpha
+    D1 = (D[0]) * (1-alpha) + A[0]*alpha, D1 = (D[1])* (1-alpha) + A[1]*alpha
+    fractal_rectangle(A1, B1, C1, D1, deep-1)    
+
+fractal_rectangle((100, 100), (500, 100), (500, 500),(100, 500))
+____________________________________________________
+def pow(a: float, n:int):# vosvedenie v ctepen
+    if n == 0:
+        return 1
+    elif n%2 == 1: # nechet
+        return pow(a, n-1) * a
+    else: # chet
+        return pow(a**2, n//2)
+
+print(pow(5,4))
+_____________________________________
+def gen_bin(m, prefix = ""):
+    #"""алгоритм генерации всех чисел без цикла для двоичной системы счисления"""
+    if m == 0:
+        print(prefix)
+    else:
+        gen_bin(m-1, prefix+"0")
+        gen_bin(m-1, prefix+"1")
+gen_bin(3)
+
+def gen_bin(m, prefix = ""):
+    #"""алгоритм генерации всех чисел цикла для двоичной системы счисления"""
+    if m == 0:
+        print(prefix)
+        return
+    for digit in "0", "1":
+        gen_bin(m-1, prefix+ digit)
+
+def generate_numbers(n:int, m:int, prefix = None):
+"""рекурсивная генерация всех чисел длины М, n <= 10, c lidiruyshimi nesnachashami nulyami, v n-richnoy cicteme schicleniya"""
+    prefix = prefix or []
+    if m == 0:
+        print(prefix)
+        return
+    for digit in range(n):
+        prefix.append(digit)
+        generate_numbers(n, m-1, prefix)
+        prefix.pop()
+
+n = int(input())
+m = int(input())
+print(generate_numbers(n, m))
+_________________________________
+def find(numbers, A):
+    """ishet numbers v A i vosvrashaet True, esli est takoy """
+    for x in A:
+        if numbers == x:
+            return True
+    return False
+
+def generate_permutation(n: int, m: int = -1, prefix=None):
+    # """алгоритм генерации всех перестановок (рекурсивная) n chisel v m-posisiyax, c prefixom
+    m = n if m == -1 else m  # po ymolchaniy n chicel v n posisiyax
+    prefix = prefix or []
+    if m == 0:
+        print(prefix)
+        return
+    for numbers in range(1, n + 1):
+        if find(numbers, prefix):
+            continue
+        prefix.append(numbers)
+        generate_permutation(n, m-1, prefix) 
+        prefix.pop()     
+generate_permutation(3) 
+________________________
+import turtle
+def david():
+    for i in range(6):
+        turtle.begin_fill()
+        for j in range(3):
+            turtle.forward(50)
+            turtle.left(360/3)
+        turtle.end_fill()
+
+        turtle.forward(50)
+        turtle.right(60)
+turtle.shape("turtle")
+turtle.shapesize(2)
+turtle.color("green", "yellow")
+turtle.speed(5)
+david()
+turtle.backward(200)
+david()
+_______________________________
+#Напишите функцию, которая для заданного натурального числа n генерирует последовательность чисел, описанную в гипотезе Коллатца
+def kollatc(num):
+    list_1 = []
+    list_1.append(num)
+    if num == 1:
+        return print(1)
+    while num != 1:
+        if num % 2 != 0:
+            num = 3*num+1
+            list_1.append(num)
+        else:
+            num = num//2
+            list_1.append(num)
+    return print(*list_1, sep = " ")
+
+kollatc(int(input())) 
+
+a = [int(input())]
+while a[-1] != 1:
+    a.append(a[-1] * 3 + 1 if a[-1] % 2 else a[-1] // 2)
+print(*a)
+
+import matplotlib.pyplot as plt
+
+
+def collatz(digit):
+    yield digit
+    while digit != 1:
+        digit = digit * 3 + 1 if digit % 2 else digit // 2
+        yield digit
+
+def counter_collatz(digit):
+    sm, cnt = 0, 0
+    for item in collatz(digit):
+        sm += item
+        cnt += 1
+    return sm / cnt, cnt
+
+table = [(0, 0)]
+for i in range(1, 100):
+    table.append(counter_collatz(i))
+
+sum_table = [i[0] for i in table]
+count_table = [i[1] for i in table]
+fig = plt.figure()
+graph1 = plt.plot(sum_table, 'g')
+graph2 = plt.plot(count_table, 'r')
+_______________________
+def get_age_name(user_data):
+    age = user_data[2]
+    name = user_data[0]
+    return age,name
+user =["Ann", "Davis", 35]
+print(get_age_name(user))
+
+def rental_car_cost(d):
+    rent_day = 40
+    if 7 > d >= 3:
+        return (rent_day * d)- 20
+    elif d >= 7:
+        return (rent_day * d)-50
+    else:
+        return (rent_day * d)
+
+def rental_car_cost(d):
+  return d * 40 - (d > 2) * 20 - (d > 6) * 30
+________________________
+def check_password(password):
+    upper = [i for i in password if i.isupper()]
+    digit = [i for i in password if i.isdigit()]
+    simb = [i for i in '!@#$%*' if i in password]
+    if len(password) >= 10 and len(upper) > 0 and len(digit) > 2 and len(simb) >= 1:
+        print('Perfect password')
+    else:
+        print('Easy peasy')
+
+def check_password(a):
+    print("Perfect password" if len(set("!@#$%*")&set(a))>0 and len(set("0123456789")&set(a))>0 and len(a)>=10  and a.islower()==False else "Easy peasy")
+_________________________________
+def count_letters(stroka):
+    upper = [i for i in stroka if i.isupper()]
+    down = [i for i in stroka if i.islower()]    
+    print(f"Количество заглавных символов: {len(upper)}")
+    print(f"Количество строчных символов: {len(down)}")
+
+def count_letters(a):
+    N,K=0,0
+    for i in a:
+        N+=i.isupper()
+        K+=i.islower()
+    print(f'Количество заглавных символов: {N}\nКоличество строчных символов: {K}')
+
+import re
+def count_letters(i):
+    print(f"Количество заглавных символов: {len(re.findall(r'[A-ZА-ЯЁ]', i))}")
+    print(f"Количество строчных символов: {len(re.findall(r'[a-zа-яё]', i))}")
+___________________________
+# объявление функции
+def count_letter(text, letter):
+    print(text.count(letter))
+# считываем данные
+text = input()
+symbol = input()
+# вызываем функцию
+count_letter(text, symbol)
+__________________________
+# объявление функции
+def is_between(name, surname, middlename):
+    print(True if surname<= name <= middlename or middlename <= name <= surname else False)
+# считываем данные
+a, b, c = map(int, input().split())
+# вызываем функцию
+is_between(a, b, c)
+__________________
+def print_initials(name, surname, middlename):
+    print(f'{surname.capitalize()} {name[0].capitalize()}.{middlename[0].capitalize()}.')
+
+name = input()
+surname = input()
+middlename = input()
+print_initials(name, surname, middlename)
+_______________
+def is_person_teenager(x):
+    return 12 <= x <= 17
+________________________
+"""В этой задаче вам необходимо воспользоваться уже готовой функцией gcd(a, b), которая принимает два числа и находит наибольших общий делитель для них.
+Ваша задача при помощи функции gcd определить НОД произвольного количества чисел.
+На первой строке вводится натуральное число n – количество чисел. Далее идут n строк, в каждой из которых натуральное число."""
+def gcd(a, b):
+    while b > 0:
+        a, b = b, a%b
+    return a
+lst =sorted([int(input()) for i in range(int(input()))])
+x = gcd(lst[0],lst[-1])
+print(x)
+______________________pascal
+def getRow(self, rowIndex: int) -> List[int]:
+	lst = [1]*(rowIndex+1)
+	up = rowIndex
+	down = 1
+    for i in range(1, rowIndex):
+		lst[i] = lst[i-1]*int(up/down)
+		up = up - 1
+		down = down + 1
+	return lst
+______________________________
+def find_duplicate(lst):        
+    lst1 =[]
+    for i in lst:
+        if i not in lst1 and lst.count(i) > 1:
+            lst1.append(i)
+    return lst1
+
+def find_duplicate(numbers):
+    return [n for indx, n in enumerate(numbers) if numbers.count(n) > 1 and numbers.index(n) == indx]
+______________________
+def first_unique_char(s):
+    for i in s:
+        if s.count(i) == 1:
+            return s.index(i)
+    return -1
+
+def first_unique_char(s):
+    return "-1" if all(s.count(i) > 1 for i in s) else next(s.index(i) for i in s if s.count(i) == 1)
+
+def first_unique_char(t):
+    text = [i for i in t if t.count(i) == 1]
+    if len(text) == 0:
+        return '-1'
+    else:
+        return t.index(text[0])
+_________________________
+def format_name_list(names: list[dict]) -> str:
+    lst = []             
+    for i in names:
+        lst.append(i['name'])
+    if len(lst) == 0:    
+        return ''
+    elif len(lst) == 1: 
+        return lst[0]
+    else:            
+        if len(lst) == 2:
+            return f'{lst[0]} и {lst[1]}'
+
+        else:          
+            stroka = ''
+            for i in range(1, len(lst) - 1):
+                stroka += (lst[i - 1] + ', ')
+            stroka += f'{lst[-2]} и {lst[-1]}'
+            return stroka
+
+def format_namelist(lst):
+    a = []
+    for i in range(len(lst)):
+        a.append(lst[i]['name'])
+    if len(a) > 1:
+        a.append(a.pop(-2) + " и " + a.pop())
+    return ', '.join(a)
+
+def format_namelist(lst):
+    lst = [i['name'] for i in lst]
+    string = ', '.join(lst[:-2] + [f'{lst[-2]} и {lst[-1]}']) if len(lst) >= 2 else ''.join(lst)
+    return string
+
+def format_namelist(name_list: list='') -> str:
+    """Принимает список словарей, у каждого словаря в списке есть
+    только ключ name.
+    Возвращает отформатированную строку, в которой все имена из списка
+    разделяются запятой кроме последних двух имен, они разделены
+    союзом "и".
+    """
+    return ' и '.join(dict['name'] for dict in name_list).replace(' и', ',', len(name_list) - 2)
+_____________________
+def domain_name(url:str) -> str:
+    lst = url.split("://")
+    substr = lst[0] if lst[0] != "http" and lst[0] != "https" else lst[1]
+    lst = substr.split('.')
+    substr = lst[1] if lst[0].upper() == 'www'.upper() else lst[0]
+    return substr
+
+import re
+def get_domain_name(url:str) -> str:
+    return re.match(r'(http[s]?://(w{3}\.)?|w{3}\.)([\w\-~]+)\.(w{2,3}){,2}', url).group(3)
+__________________________________
+import math
+
+def factorial(n):
+    return math.factorial(n)
+
+def trailing_zeros(n):
+    count = 0
+    stroka = str(factorial(n))
+    for i in stroka[-1::-1]:
+        if i == "0":
+            count +=1
+        else:
+            break
+    return count
+_____________________
+def factorial(n: int):
+    pr = 1
+    for i in range(2, n+1):
+        pr = pr*i
+    return pr
+
+def trailing_zeros(n: int) -> int:
+    x = str(factorial(n))
+    return  len(x) - len(x.rstrip('0'))
+
+def trailing_zeros(u):
+    x = factorial(u)
+    count = 0
+    while x % 10 == 0:
+        x = x // 10
+        count += 1
+    return count
+
+def trailing_zeros(n: int) -> int:
+    c = 0
+    while n:
+        n //= 5
+        c += n        
+    return c
+______________________
+def count_AGTC(dna):
+    return dna.count('A'), dna.count('G'), dna.count('T'), dna.count('C'),
+______________
+def first_repeated_word(stroka: str):
+    "Находит первый дубль в строке "
+    lst = []
+    for i in stroka.split():
+        if i not in lst:
+            lst.append(i)
+        else:
+            return i
+_______________________leetcode
+def plusOne(self, digits: List[int]) -> List[int]:
+	return [int(x) for x in str(int(''.join(map(str, digits))) + 1)]
+_______________leetcode  Given two binary strings a and b, return their sum as a binary string.
+def addBinary(self, a: str, b: str) -> str:
+        return str(bin(int(a,2)+int(b,2)))[2:]
+____________________
+def addToArrayForm(self, num: List[int], k: int) -> List[int]:
+	chislo = int(''.join(map(str, num)))
+	x = chislo + k
+	return list(map(int, str(x)))
+
+        s=''.join(map(str,num))
+        a=int(s)+k
+        return [int(i) for i in str(a)]
+________________________
+def shift_letter(letter, number):
+    """Функция сдвигает символ letter на shift позиций"""
+    new_code = (ord(letter) - ord('a') + number) % 26
+    return chr(new_code + 97)
+
+def caesar_cipher(stroka: str, number: int):
+    """Шифр цезаря"""
+    lst = []
+    for elem in stroka: 
+        for i in elem:
+            if i.isalpha() :
+                x = (ord(i) - ord('a') + number) % 26 
+                lst.append(chr(x+97))
+            else:
+                lst.append(i)
+    return "".join(lst)
+
+def shift_letter(letter: str, shift: int) -> str:
+    "Функция сдвигает символ letter на shift позиций"
+    res = ord(letter) + shift % 26 if shift > 0 else ord(letter) - abs(shift) % 26
+    return chr(res + 26) if res < 97 else chr(res - 26) if res > 122 else chr(res)
+def caesar_cipher(st: str, shift: int) -> str:
+    "Шифр цезаря"
+    res = ''
+    for i in st:
+        if i.isalpha():
+            res += shift_letter(i, shift)
+        else:
+            res += i
+    return res
+_________________________
+def words_with_position(lst: list):
+    lst = [(index, value) for value, index in enumerate(words, start = 1)]
+    return lst
+
+words = ['feel', 'graduate', 'movie', 'fashionable', 'bacon', 
+         'drop', 'produce', 'acquisition', 'cheap', 'strength', 
+         'master', 'perception', 'noise', 'strange', 'am']
+print(words_with_position(words))
+
+words_with_position = [pair[::-1] for pair in enumerate(words, start=1)]
+print(words_with_position)
+______________
+english_words = ('attack', 'bless', 'look', 'reckless', 'short', 'monster')
+for number, word in enumerate(english_words,start = 1):
+    print(f"Word № {number} = {word}")
+
+[print(f'Word № {key} = {value}') for key, value in enumerate(english_words, 1)]
+_______________________________
+def make_header(stroka: str, number = 1):
+    return f"<h{number}>{stroka}</h{number}>"
+_______________________
+def sq_sum(*args):
+    lst =[i**2 for i in args]
+    return sum(lst)
+
+def sq_sum(*args):
+    return sum(x ** 2 for x in args)
+_____________________
+def mean(*args):
+    lst = [i for i in args if type(i) == int or type(i) == float]
+    if len(lst) == 0:
+        return 0.0
+    return sum(lst)/len(lst)
+
+def mean(*args):
+    s = [float(i) for i in args if type(i) in (int, float)]
+    if len(s) > 0:
+        return sum(s)/len(s)
+    else:
+        return 0.0
+________________________
+import random
+def crasy(x):
+    random.seed(x)
+    return random.randint(-100, 100)
+
+n = int(input())
+print(crasy(n))
+________________________
+def check_sum(*args):
+    x = sum(args)
+    if x >= 50:
+        return print("verification passed")
+    else:
+        return print("not enough")
+
+def check_sum(*args:int) ->str|None:
+    """Функция должна выводить not enough, если сумма всех элементов 
+       меньше 50, в противном случае выводить verification passed """
+    print(('verification passed','not enough')[sum(args) < 50])
+_________________________
+def multiply(*args:int):
+    """функция должна находить произведение всех переданных значений и возвращать его в качестве результата"""
+    total = 1
+    for i in args:
+        total *=i
+    return total
+
+multiply = lambda *args: __import__('functools').reduce(lambda x, y: x * y, args, 1)
+
+import math
+def multiply(*args):
+    return(math.prod(args))
+_____________________
+def only_one_positive(*args):
+    """функциa принимает произвольное количество числовых аргументов и возвращает True, когда из всех переданных значений только одно положительное, в противном случае верните False"""
+    count=0
+    for i in args:
+        if i > 0:
+            count+=1
+    return True if count==1 else False 
+___________________________
+def print_goods(*args):
+    lst1 =[]
+    for i in args:
+        if type(i) == str and len(i)!=0:
+            lst1.append(i)
+    if len(lst1) == 0:
+        print("Нет товаров") 
+    for num, goods in enumerate(lst1,1):
+        print(f"{num}. {goods}")
+
+def print_goods(*args):
+    out = [v for v in args if isinstance(v, str) and v]
+    if len(out) > 0:
+        for i, v in enumerate(out, 1):
+            print(f'{i}. {v}')
+    else:
+        print('Нет товаров')
+_________________________________
+def info_kwargs(**kwargs):
+    for i in sorted(kwargs):
+        print(f"{i} = {kwargs[i]}")
+
+def info_kwargs(**kwargs):
+    for i in sorted(kwargs):
+        print(i, '=', kwargs.get(i))
+
+def info_kwargs(**a):
+    for i in sorted(a.keys()):
+        print(i, a[i], sep=' = ')
+__________________
+def create_actor(**kwargs):
+    actor = {
+        'name': 'Райан',
+        'surname': 'Рейнольдс',
+        'age': 46 } 
+    return actor | kwargs 
+
+def create_actor(**kwargs):
+    d = {'name': 'Райан', 'surname': 'Рейнольдс','age': 46}
+    d.update(kwargs)
+    return d
+___________________
+def disemvowel(string_):
+    string_ = list(string_)
+    for i in string_[::-1]:
+        if i in 'aeiouAEIOU':
+            string_.remove(i)
+    return str(''.join(string_))
+
+def disemvowel(string):
+    return "".join(c for c in string if c.lower() not in "aeiou")
+ ______________________
+def srednee(x):
+    return sum(x)/len(x)
+numbers = [(10, 10, 10), (30, 45, 56), (81, 39), (1, 2, 3)]
+print(min(numbers, key = srednee))
+print(max(numbers, key = srednee))
+
+from statistics import mean
+print(*(func(numbers, key=mean) for func in (min, max)), sep='\n')
+
+print(min(numbers, key=lambda a: sum(a) / len(a)))
+print(max(numbers, key=lambda a: sum(a) / len(a)))
+__________________________
+points = [(-1, 1), (5, 6), (12, 0), (4, 3), (0, 1), (-3, 2), (0, 0), (-1, 3), (2, 0), (3, 0), (-9, 1), (3, 6), (8, 8)]
+def distance(x):
+    return x[0] ** 2 + x[1] ** 2
+print(sorted(points, key = distance))
+
+points.sort(key=lambda x: x[0]**2 + x[1]**2)
+print(points)
+__________________________
+numbers = [(10, 10, 10), (30, 45, 56), (81, 80, 39), (1, 2, 3)]
+def count_min_max_elem(x):
+    return min(x)+max(x)
+
+print(sorted(numbers, key = count_min_max_elem))
+
+numbers.sort(key=lambda i: min(i) + max(i))
+_________________________
+athletes = [('Дима', 10, 130, 35), ('Тимур', 11, 135, 39), ('Руслан', 9, 140, 33), ('Рустам', 10, 128, 30), ('Амир', 16, 170, 70), ('Рома', 16, 188, 100), ('Матвей', 17, 168, 68), ('Петя', 15, 190, 90)]
+def sort_by_num(n):
+    return n[num-1]
+num = int(input())
+for i in sorted(athletes, key=sort_by_num): 
+    print(*i, end='\n')
+________________________
+from math import sin
+def sort_operetor(n=int(input()), oper=input()):
+    dict_1 = dict(квадрат=n ** 2, куб=n ** 3, корень=n ** 0.5, модуль=abs(n), синус=sin(n))
+    return dict_1[oper]
+
+print(sort_operetor())
+
+import math
+functions = dict(квадрат = lambda x: x*x,
+                 куб = lambda x: x*x*x,
+                 корень = math.sqrt,
+                 модуль = abs,
+                 синус = math.sin)
+(lambda n, f: print(functions[f](n)))(int(input()), input())
+___________________________bustryi pick v massive 1 nomera
+def find_uniq(arr):	
+	arr.sort()
+    if(arr[0] < arr[len(arr)-1] and arr[0] < arr[len(arr)-2]):
+        n = arr[0]
+    else:
+        n = arr[len(arr)-1]
+    return n 
+____________________________
+def filter(function, items):
+    result = []
+    for item in items:
+        if function(item):
+            result.append(item)
+    return result
+
+def predicate(word):
+    return word == word[::-1]
+
+words = ['abba', 'qwerty', 'python', 'a', 'deed', 'nun', 'level', 'language', 'deified', 'bbbbb', 'mother', 'sister', 'surface', '1234321']
+filtered = filter(predicate, words)
+print(len(filtered))
+___________________
+def map(function, items):
+    result = []
+    for item in items:
+        new_item = function(item)
+        result.append(new_item)
+    return result
+numbers = ['-1', '20', '3', '-94', '65', '6', '-970', '8']
+new_numbers = map(abs, map(int, numbers))
+print(new_numbers)
+_____________
+def filter(function, items):
+    result = []
+    for item in items:
+        if function(item):        
+            result.append(item)  # добавляем элемент item если функция function вернула значение True
+    return result
+
+def is_odd(num):
+    return num % 2
+def is_word_long(word):
+    return len(word) > 6
+
+numbers = list(range(15))
+words = ['В', 'новом', 'списке', 'останутся', 'только', 'длинные', 'слова']
+odd_numbers = filter(is_odd, numbers)
+large_words = filter(is_word_long, words)
+print(*map(lambda x: round(x, 2), numbers), sep='\n')
+
+def map(function, items):
+    result = []
+    for item in items:
+        result.append(function(item, 2))
+    return result
+numbers = [3.56773, 5.57668, 4.00914, 56.24241, 9.01344, 32.12013, 23.22222, 90.09873, 45.45, 314.1528, 2.71828, 1.41546]
+print(*map(round, numbers), sep='\n')
+
+numbers = [3.56773, 5.57668, 4.00914, 56.24241, 9.01344, 32.12013, 23.22222, 90.09873, 45.45, 314.1528, 2.71828, 1.41546]
+[print(i) for i  in map(lambda x: round(x, 2), numbers)]
+
+def map(function, items):
+    result = []
+    for item in items:
+        result.append(function(item))
+    return result
+def filter(function, items):
+    result = []
+    for item in items:
+        if function(item):
+            result.append(item)
+    return result
+numbers = [1014, 1321, 675, 1215, 56, 1386, 1385, 431, 1058, ]
+print(*map(lambda x: x**3, filter(lambda x: x%5 == 2 and x in range(100,1000),numbers)), sep='\n')
+______________________________
+def reduce(operation, items, initial_value):
+    acc = initial_value
+    for item in items:
+        acc = operation(acc, item)
+    return acc
+
+def add(x, y):
+    return x+y
+
+def mult(x, y):
+    return x*y
+numbers = [1, 2, 3, 4, 5]
+total = reduce(add, numbers, 0)
+product = reduce(mult, numbers, 1)
+
+reduce(lambda x, y: x+y, [1, 2, 3, 4, 5])
+
+def reduce(operation, items, initial_value):
+    total = initial_value
+    for item in items:
+        total = operation(total, item) # Это вызов нашей 'bad_func' или 'good_func' или любой
+        # x - это текущая сумма, y - это текущий элемент
+        # bad_func(total, item) => total ** 2 + item ** 2 ????
+        # Очевидно что мы не хотим возводить в квадрат каждую новую полученную сумму,
+        # но только новый добавляемый элемент
+    return acc
+
+def bad_func(x, y):
+   return x ** 2 + y ** 2
+
+def good_func(x, y):
+   return x + y ** 2
+numbers = [2, 3, 7, 11]
+print(reduce(bad_func, numbers, 0)) 
+### 454298, потому что  - ((((0 + 2 ** 2) ** 2 + 3 ** 2) ** 2 + 7 ** 2) ** 2 + 11 * 2)
+print(reduce(good_func, numbers, 0))
+### 183, потому что  - ((((0 + 2 ** 2) + 3 ** 2) + 7 ** 2) + 11 ** 2)
+____________________
+def map(function, array):
+    if type(array) == dict:
+        array = tuple(array)
+    return type(array)(function(elem) for elem in array)
+
+
+def filter(function, array):
+    if type(array) == dict:
+        array = tuple(array)
+    return type(array)(elem for elem in array if function(elem))
+_________________________
+def map(function, array):
+    if type(array) == dict:
+        return type(array)((i, function(j)) for i, j in array.items())
+    else:     
+        return type(array)(function(elem) for elem in array)
+
+dictonary = {'1': '1', '2': '2', '3': '3', '4': '4', '5': '5'}
+print(map(int, dictonary))
+__________
+нашел там функцию round(n, i) – где n – число, а i – количество знаков после запятой, до которых нужно округлить, работает без math
+______________________________def is_non_negative_num(string):
+def is_non_negative_num(string):   
+	try:
+		value = float(string)
+		return value >= 0 
+	except ValueError:
+		return False
+
+is_non_negative_num = lambda q: q.replace('.', '', 1).isdigit()
+
+is_non_negative_num = lambda s: s.count('.') <= 1 and set(s) <= set('.1234567890')
+_________________________
+mixed_list = ['tuesday', 'abroad', 'abuse', 'beside', 'monday', 'abate', 'accessory', 'absorb', 1384878, 'sunday']
+ma_x = list(filter(lambda x: x if type(x) is int else 0, mixed_list))
+print(max(ma_x))
+
+print(max(mixed_list, key=lambda x: (isinstance(x, int), x)))
+
+print(max(mixed_list, key=lambda x: (0, x)[type(x) == int]))

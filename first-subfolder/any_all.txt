@@ -1,0 +1,443 @@
+Тема урока: функции any(), all(), zip(), enumerate()
+Функция all()
+Функция any()
+Функция enumerate()
+Функция zip()
+Аннотация. Урок посвящен встроенным функциям all(), any(), zip(), enumerate().
+
+Функции all() и any()
+При работе с коллекциями часто приходится определять, выполняется ли некоторое условие одновременно для всех элементов последовательности или хотя бы 
+для одного. Для этого существуют две встроенные функции all() и any().
+
+Функция all()
+Встроенная функция all() возвращает значение True, если все элементы переданной ей последовательности (итерируемого объекта) истинны (приводятся к 
+значению True), и False в противном случае.
+Сигнатура функции следующая: all(iterable). В качестве iterable может выступать любой итерируемый объект:
+список;
+кортеж;
+строка;
+множество;
+словарь и т.д.
+Приведенный ниже код:
+print(all([True, True, True]))     #  возвращает True, так как все значения списка равны True
+print(all([True, True, False]))    #  возвращает False, так как не все значения списка равны True
+
+Напомним, что в Python все следующие значения приводятся к значению False:
+константы None и False;
+нули всех числовых типов данных: 0, 0.0, 0j, Decimal(0), Fraction(0, 1);
+пустые коллекции: '', (), [], {}, set(), range(0).
+
+Приведенный ниже код:
+print(all([1, 2, 3]))   #True
+print(all([1, 2, 3, 0, 5])) #False
+print(all([True, 0, 1])) #False
+print(all(('', 'red', 'green'))) #False
+print(all({0j, 3+4j})) #False
+
+При работе со словарями функция all() проверяет на соответствие параметрам True ключи словаря, а не их значения.
+Приведенный ниже код:
+dict1 = {0: 'Zero', 1: 'One', 2: 'Two'}
+dict2 = {'Zero': 0, 'One': 1, 'Two': 2}
+print(all(dict1))-----False
+print(all(dict2))------True
+
+Обратите внимание: если переданный итерируемый объект пустой, то функция all() возвращает значение True.
+Приведенный ниже код:
+print(all([]))          #  передаем пустой список----True
+print(all(()))          #  передаем пустой кортеж----True
+print(all(''))          #  передаем пустую строку----true
+print(all([[], []]))    #  передаем список, содержащий пустые списки-----False
+
+Функция any()
+Встроенная функция any() возвращает значение True, если хотя бы один элемент переданной ей последовательности (итерируемого объекта) является истинным 
+(приводится к значению True), и False в противном случае.
+Сигнатура функции следующая: any(iterable). В качестве iterable может выступать любой итерируемый объект:
+список;
+кортеж;
+строка;
+множество;
+словарь и т.д.
+Приведенный ниже код:
+print(any([False, True, False]))       #  возвращает True, так как есть хотя бы один элемент, равный True------True
+print(any([False, False, False]))      #  возвращает False, так как нет элементов, равных True------False
+
+Приведенный ниже код:
+print(any([0, 0, 0]))-----False
+print(any([0, 1, 0]))-------True
+print(any([False, 0, 1]))-------True
+print(any(['', [], 'green']))------True
+print(any({0j, 3+4j, 0.0}))----True
+
+При работе со словарями функция any() проверяет на соответствие True ключи словаря, а не их значения.
+Приведенный ниже код:
+dict1 = {0: 'Zero'}
+dict2 = {'Zero': 0, 'One': 1}
+print(any(dict1))-----False
+print(any(dict2))------True
+
+Обратите внимание: если переданный объект пуст, то функция any() возвращает значение False.
+Приведенный ниже код:
+
+print(any([]))          #  передаем пустой список----False
+print(any(()))          #  передаем пустой кортеж_------False
+print(any(''))          #  передаем пустую строку------False
+print(any([[], []]))    #  передаем список, содержащий пустые списки-----False
+
+Функции all() и any() в связке с функцией map()
+Функции all() и any() могут быть полезны в комбинации с функцией map(), которая может преобразовывать элементы последовательности (итерируемого объекта) 
+к значению True/False в соответствии с неким условием.
+Приведенный ниже код, проверяет, все ли элементы списка numbers больше 1010:
+numbers = [17, 90, 78, 56, 231, 45, 5, 89, 91, 11, 19]
+result = all(map(lambda x: True if x > 10 else False, numbers))
+if result:
+    print('Все числа больше 10')
+else:
+    print('Хотя бы одно число меньше или равно 10')
+и выводит:
+Хотя бы одно число меньше или равно 10
+так как список numbers содержит число 55, которое не больше чем 1010.
+
+Лямбда функцию, которая преобразует элементы списка numbers в значения True/False можно упростить следующим образом:
+
+result = all(map(lambda x: x > 10, numbers))
+Приведенный ниже код, проверяет, что хотя бы один элемент списка четное число:
+numbers = [17, 91, 78, 55, 231, 45, 5, 89, 99, 11, 19]
+
+result = any(map(lambda x: x % 2 == 0, numbers))
+if result:
+    print('Хотя бы одно число четное')
+else:
+    print('Все числа нечетные')
+Хотя бы одно число четное
+так как список numbers содержит четное число 7878.
+
+Функция enumerate()
+Встроенная функция enumerate() возвращает кортеж из индекса элемента и самого элемента переданной ей последовательности (итерируемого объекта).
+Сигнатура функции следующая: enumerate(iterable, start). В качестве iterable может выступать любой итерируемый объект:
+список;
+кортеж;
+строка;
+множество;
+словарь и т.д.
+С помощью необязательного параметра start можно задать начальное значение индекса. По умолчанию значение параметра start = 0, то есть счет начинается 
+с нуля.
+Приведенный ниже код:
+colors = ['red', 'green', 'blue']
+for pair in enumerate(colors):
+    print(pair)
+(0, 'red')
+(1, 'green')
+(2, 'blue')
+
+Если счет нужно начать с отличного от нуля числа, то нужно передать значение аргумента start.
+Приведенный ниже код:
+colors = ['red', 'green', 'blue']
+for pair in enumerate(colors, 100):
+    print(pair)
+(100, 'red')
+(101, 'green')
+(102, 'blue')
+
+Обратите внимание, функция enumerate() возвращает не список, а специальный объект, который называется итератором. Такой объект похож на список тем, что 
+его можно перебирать циклом for, то есть итерировать. Итератор можно преобразовать в список с помощью функции list().
+Приведенный ниже код:
+colors = ['red', 'green', 'blue']
+pairs = enumerate(colors)
+print(pairs)
+print(list(pairs))
+<enumerate object at 0x...>
+[(0, 'red'), (1, 'green'), (2, 'blue')]
+
+Мы также можем использовать распаковку кортежей при итерировании с помощью цикла for.
+Приведенный ниже код:
+colors = ['red', 'green', 'blue']
+for index, item in enumerate(colors):
+    print(index, item)
+0 red
+1 green
+2 blue
+
+Такой код является альтернативой коду:
+colors = ['red', 'green', 'blue']
+for i in range(len(colors)):
+    print(i, colors[i])
+
+Функция zip()
+Встроенная функция zip() объединяет отдельные элементы из каждой переданной ей последовательности (итерируемого объекта) в кортежи.
+Сигнатура функции следующая: zip(*iterables). В качестве iterable может выступать любой итерируемый объект:
+список;
+кортеж;
+строка;
+множество;
+словарь и т.д.
+
+Приведенный ниже код:
+numbers = [1, 2, 3]
+words = ['one', 'two', 'three']
+for pair in zip(numbers, words):
+    print(pair)
+(1, 'one')
+(2, 'two')
+(3, 'three')
+
+Функция zip(), как и функция enumerate() возвращает не список, а специальный объект, который называется итератором. Такой объект похож на список тем, 
+что его можно перебирать циклом for, то есть итерировать. Итератор можно преобразовать в список с помощью функции list().
+Приведенный ниже код:
+numbers = [1, 2, 3]
+words = ['one', 'two', 'three']
+result = zip(numbers, words)
+print(result)
+print(list(result))
+<zip object at 0x...>
+[(1, 'one'), (2, 'two'), (3, 'three')]
+
+Мы можем передавать функции zip() сколько угодно итерируемых объектов.
+Приведенный ниже код:
+numbers = [1, 2, 3]
+words = ['one', 'two', 'three']
+romans = ['I', 'II', 'III']
+result = zip(numbers, words, romans)
+print(list(result))
+выводит:
+[(1, 'one', 'I'), (2, 'two', 'II'), (3, 'three', 'III')]
+
+Мы можем передать функции zip() даже один итерируемый объект.
+Приведенный ниже код:
+numbers = [1, 2, 3]
+result = zip(numbers)
+print(list(result))
+[(1,), (2,), (3,)]
+
+Если функции zip() передать итерируемые объекты, имеющие разную длину, то объект с наименьшим количеством элементов определяет итоговую длину.
+Приведенный ниже код:
+numbers = [1, 2, 3, 4]
+words = ['one', 'two']
+romans = ['I', 'II', 'III']
+result = zip(numbers, words, romans)
+print(list(result))
+[(1, 'one', 'I'), (2, 'two', 'II')]
+
+Частые сценарии использования функции zip()
+Сценарий 1. Функция zip() удобна для создания словарей, когда ключи и значения находятся в разных списках.
+Приведенный ниже код:
+keys = ['name', 'age', 'gender']
+values = ['Timur', 28, 'male']
+info = dict(zip(keys, values))
+print(info)
+выводит:
+{'name': 'Timur', 'age': 28, 'gender': 'male'}
+
+Сценарий 2. Функция zip() удобна для одновременного (параллельного) итерирования сразу по нескольким коллекциям.
+Приведенный ниже код:
+name = ['Timur', 'Ruslan', 'Rustam']
+age = [28, 21, 19]
+for x, y in zip(name, age):
+    print(x, y)
+выводит: 
+Timur 28
+Ruslan 21
+Rustam 19
+
+Примечания
+Примечание 1. Итераторы – важная концепция языка Python. Нужно помнить:
+итераторы можно обойти циклом for;
+итератор можно преобразовать в список или кортеж, с помощью функций list() и tuple();
+итератор можно распаковать с помощью *.
+
+Примечание 2. Реализация встроенных функций all() и any() выглядит примерно так:
+def all(iterable):
+    for item in iterable:
+       if not item:
+           return False
+    return True
+
+def any(iterable):
+    for item in iterable:
+        if item:
+            return True
+    return False
+
+Примечание 3. Мы можем использовать одновременно функции zip() и enumerate():
+Приведенный ниже код:
+list1 = ['a1', 'a2', 'a3']
+list2 = ['b1', 'b2', 'b3']
+for index, (item1, item2) in enumerate(zip(list1, list2)):
+    print(index, item1, item2)
+0 a1 b1
+1 a2 b2
+2 a3 b3
+_________________________________
+marks1, marks2, marks3 = [{*map(int, input().split())} for _ in range(3)]
+set1 =marks3.difference(marks1, marks2)
+print(*sorted(set1)[::-1])
+
+print(*sorted(set3 - set2 - set1, reverse=True))
+
+x, y, z = ({*input().split()} for _ in 'xyz')
+print(*sorted(z-x-y, reverse=True, key=int))
+
+a = set()
+for i in range(int(input())):
+for j in input().split():
+a.add(j)
+print(len(a))
+a.clear()
+
+for _ in range(int(input())):
+print(len(set(input().split())))
+
+print(*[len(set(input().split()))for i in range(int(input()))], sep='\n')
+
+n = int(input())
+for i in range(n):
+s = len(set(map(int,input().split())))
+print(s)
+
+my_frozen = frozenset(int(i* "7") for i in range(1, 78))
+
+stroka = input()
+set1 = set()
+for i in stroka:
+if i.isdigit() and stroka.count(i) > 1:
+set1.add(i)
+if len(set1) >= 1:
+print(*sorted(set1))
+else:
+print('NO')
+
+a = [i for i in input() if i in '0123456789']
+b = set(a)
+for i in b:
+a.remove(i)
+if a: # Если значение А возвращает TRUE, то идет выполнение блока кода. Как вы знаете TRUE это - не пустая строка(и не только), значение отличное от 0
+print(*sorted(set(a)))
+else:
+print('NO')
+
+s = import('collections').Counter([int(i) for i in input() if i.isdigit()])
+print(*sorted([k for k, v in s.items() if v > 1]) or ['NO'])
+
+a = [c for c in input() if c.isdigit()]
+a = sorted(set(filter(lambda x: a.count(x) > 1, a)))
+print(*a if a else ['NO'])
+____________fibonnachi
+a, b, n = 0, 1, int(input())
+for i in range(2, n+1):
+a, b = b, a + b
+print(b)
+
+def fib(n):
+assert n > 0
+fib1 = [None] * (n+1)
+fib1[:2] = [0, 1]
+for k in range(2, n + 1):
+fib1[k] = fib1[k - 1] + fib1[k - 2]
+return fib1[n]
+
+FORMULA BINE
+def fib(n):
+sqrt5 = 5 ** 0.5
+phi = (1 + sqrt5) / 2
+psi = (1 - sqrt5) / 2
+return int((phi ** n - psi ** n) / sqrt5)
+
+print(fib(int(input())))
+
+#умножает матрицу а на матрицу b
+def multipleMarix(a, b):
+c = [[0, 0],
+[0, 0]]
+c[0][0] = a[0][0] * b[0][0] + a[0][1] * b[1][0]
+c[0][1] = a[0][0] * b[0][1] + a[0][1] * b[1][1]
+c[1][0] = a[1][0] * b[0][0] + a[1][1] * b[1][0]
+c[1][1] = a[1][0] * b[0][1] + a[1][1] * b[1][1]
+return c
+
+#возводим матрицу а в степень n за O(logn)
+def powMatrix(a, n):
+if n == 1:
+return a
+if n % 2 == 0:
+matrix = powMatrix(a, n//2)
+return multipleMarix(matrix, matrix)
+else:
+matrix = powMatrix(a, (n-1)//2)
+return multipleMarix(multipleMarix(matrix, matrix), a)
+
+def fib(n):
+a = [[1, 1],
+[1, 0]]
+if n <= 1:
+return n
+else:
+return powMatrix(a, n-1)[0][0]
+
+1 = lambda: 10 + 20 # функция без параметров
+f2 = lambda х, у: х + у # функция с двумя параметрами
+f3 = lambda х, у, z: х + у + z # функция с тремя параметрами
+
+points = [(1, -1), (2, 3), (-10, 15), (10, 9), (7, 18), (1, 5)]
+print(sorted(points, key=lambda point: point[1]))# сортируем по второму значению кортежа
+print(sorted(points, key=lambda point: point[0] + point[1]))# сортируем по сумме элементов кортежа
+
+numbers = [1, 2, 3, 4, 5, 6]
+new_numbers1 = list(map(lambda x: x+1, numbers)) # увеличиваем на 1
+new_numbers2 = list(map(lambda x: x*2, numbers))# удваиваем
+new_numbers3 = list(map(lambda x: x**2, numbers))# возводим квадрат
+
+numbers = [-1, 2, -3, 4, 0, -20, 10, 30, -40, 50, 100, 90]
+positive_numbers = list(filter(lambda x: x > 0, numbers)) # положительные числа
+large_numbers = list(filter(lambda x: x > 50, numbers)) # числа, большие 50
+even_numbers = list(filter(lambda x: x % 2 == 0, numbers)) # четные числа
+
+words = ['python', 'stepik', 'beegeek', 'iq-option']
+new_words1 = list(filter(lambda w: len(w) > 6, words)) # слова длиною больше 6 символов
+new_words2 = list(filter(lambda w: 'e' in w, words)) # слова содержащие букву e
+
+from functools import reduce
+words = ['python', 'stepik', 'beegeek', 'iq-option']
+numbers = [1, 2, 3, 4, 5, 6]
+summa = reduce(lambda x, y: x + y, numbers, 0)
+product = reduce(lambda x, y: x * y, numbers, 1)
+sentence = reduce(lambda x, y: x + ' loves ' + y, words, 'Everyone')
+
+def generator_square_polynom(a, b, c):
+return lambda x: ax**2 + bx + c #анонимные функции являются замыканиями: возвращаемая функция запоминает значения переменных a, b, c из внешнего окружения
+
+numbers = [-2, 0, 1, 2, 17, 4, 5, 6]
+result = list(map(lambda x: 'even' if x % 2 == 0 else 'odd', numbers))
+#значение1 if условие else значение2
+
+f1 = lambda x, y, z: x + y + z
+f2 = lambda x, y, z=3: x + y + z
+f3 = lambda *args: sum(args)
+f4 = lambda **kwargs: sum(kwargs.values())
+f5 = lambda x, *, y=0, z=0: x + y + z
+
+•	анонимная функция может содержать только выражение, и не может включать в свое тело операторы;
+•	в теле анонимной функции такие операторы, как return, pass, assert или raise, вызовут исключение SyntaxError;
+•	анонимная функция пишется как одна строка исполнения;
+•	анонимная функция может быть немедленно вызвана 
+print((lambda х, у: х + у)(5, 10)) # 5 + 10
+print(1 + (lambda x: x*5)(10) + 2) # 1 + 50 + 2
+
+добавил бы к примерам  по сортировке
+points = [(1, -1), (-10, 15), (2, 3), (10, 9), (7, 18), (1, 5), (2, -4)]
+print(sorted(points, key=lambda point: point[1])) # сортируем по второму значению кортежа print(sorted(points, key=lambda point: point[0] + point[1])) # сортируем по сумме элементов кортежа
+случай когда требуется последовательно применить  два требования:
+
+print(sorted(points, key=lambda point: (point[0] + point[1], point[1]))) # сортируем по сумме элементов кортежа, а в случае равенства по второму значению кортежа
+
+numbers = [46, 61, 34, 17, 56, 26, 93, 1, 3, 82, 71, 37, 80, 27]
+result = list(filter(lambda x: not(x % 2 and x > 47), numbers))
+res3 = list(map((lambda x: x//2 if x % 2 == 0 else x), result))
+print(' '.join(map(str, res3)))
+
+print(*map(lambda x: [x // 2, x][x % 2], filter(lambda x: x < 48 or not x % 2, numbers)))
+
+print(*map(lambda y: y >> (~y & 1), filter(lambda x: ~x & 1 or x < 48, numbers)))# >> побитовый сдвиг влево, выражение y >> 1 равносильно целочисленному делению на 2: y // 2. Соотвественно y >> k 
+⇔ y // 2 ** k. >> "побитовый сдвиг вправо", т.к. влево - это умножение на 2.
+
+data = ['год', 'человек', 'время', 'дело', 'жизнь', 'день', 'рука', 'раз', 'работа', 'слово']
+data.sort(key=lambda x: (len(x), x))
+print(" ".join(data))

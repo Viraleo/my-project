@@ -1,0 +1,2575 @@
+На вход программе подаются два натуральных числа n and m.Напишите программу, которая создает матрицу размером n×m и заполняет её числами от n⋅m в соответствии с образцом.
+n, m = map(int, input(). split())
+mtrx = []
+count = 1
+for i in range(1, n*m+1):
+    mtrx.append(i)
+mtrx1 = []
+for i in range(0, len(mtrx), m):
+    mtrx1.append(mtrx[i:i+m])
+for i in range(n):
+    for j in range(m):       
+        print(str(mtrx1[i][j]).ljust(3), end='')
+    print()
+
+n, m = [int(i) for i in input().split()]
+matrix = [[0] * m for _ in range(n)]
+for i in range(n):
+    for j in range(m):
+        matrix[i][j] = i * m + j + 1
+for i in range(n):
+    for j in range(m):
+        print(str(matrix[i][j]).ljust(3), end=' ')
+    print()
+
+n,m = [int(i) for i in input().split()] 
+s=1
+for i in range(n):
+    for j in range(m):
+        print(str(s).ljust(3), end=' ')
+        s+=1
+    print()
+______________________________
+n, m = [int(i) for i in input().split()]
+matrix = [[0] * m for _ in range(n)]
+for i in range(n):
+    for j in range(m):
+        matrix[i][j] = j * n + i + 1
+for i in range(n):
+    for j in range(m):
+        print(str(matrix[i][j]).ljust(3), end=' ')
+    print()
+
+lst = [[0 for x in range(int(col))] for _ in range(int(row))]
+counter = 1
+for i in range(int(col)):
+    for j in range(int(row)):
+        lst[j][i] = counter
+        counter += 1
+for r in lst:
+    print(*r)
+_________________________
+a = []
+s = 0
+n = int(input())    # количество строк и столбцов матрицы
+for i in range(n):
+    b = []    # создание пустого списка
+    b = list(map(int, input().split()))    # заполнение списка
+    a.append(b)    # добавление списка в строку матрицы
+for i in range(n):    # обход строк матрицы
+    for j in range(n):    # обход столбцов матрицы
+        if i == j:    # если текущий элемент находится на главной диагонале 
+            s += a[i][j]    # суммирование элемента
+print(s)
+
+n, s = int(input()), 0
+m = [[int(i) for i in input().split()] for _ in range(n)]
+
+for i in range(n):
+    s += m[i][i]
+_________________________
+n = int(input())
+a =[]
+for i in range(n):
+    b = [] 
+    b = list(map(int, input().split()))
+    a.append(b)
+for i in range(n):
+    for j in range(n):
+        print(a[j][i], end = " ")
+    print()
+
+a = [list(map(int, input().split())) for i in range(int(input()))]# инициализация
+________________________
+n = int(input())
+a = [list(map(int, input().split())) for i in range(n)]
+for i in range(n-1, -1, -1):
+    for j in range(n-1, -1, -1):
+        print(a[j][i], end =" ")
+    print() 
+__________________________
+n, m = map(int, input(). split())
+ls = []
+for i in range(n):
+    ls.append(list(map(int, input().split())))   
+for i in range(n):
+    for j in range(m-1, -1, -1):
+        print(ls[i][j], end =" ")
+    print() 
+
+n, m = map(int, input().split())
+mtrx = [list(map(int, input().split())) for _ in range(n)]
+[print(*[mtrx[i][j] for j in range(m-1,-1,-1)], sep=' ') for i in range(n)]
+_______________________________
+В первой строке вам необходимо вывести N чисел – суммы элементов массива для каждой строки в отдельности. Во второй строке в аналогичном формате выведите M чисел – суммы элементов для каждого столбца
+n, m = map(int, input(). split())
+ls = []
+for i in range(n):
+    ls.append(list(map(int, input().split()))) 
+for i in range(n):
+    sum = 0
+    for j in range(m):
+        sum += ls[i][j]
+    print(sum, end = " ")                 
+print()
+for j in range(m):
+    sum1 = 0
+    for i in range(n):
+        sum1 += ls[i][j]
+    print(sum1, end=' ')
+
+row, col = map(int, input().split())
+matrix = [list(map(int, input().split())) for row in range(row)]
+for row in matrix:
+	print(sum(row), end=' ')
+print()
+for x in range(col):
+	print(sum([row[x] for row in matrix]), end=' ')
+
+n,m = map(int,input().split())
+l=[]
+for i in range(n):
+    l.append(list(map(int, input().split())))
+for row in range(n):
+    print(sum(l[row]), end=' ')
+print()
+for stolb in range(m):
+    s=[]
+    for row in range(n):
+        s.append(l[row][stolb])
+    print(sum(s[::]), end=' ')
+    s=[]
+
+n, m = map(int, input().split())
+matrix = [[int(i) for i in input().split()] for i in range(n)]
+print(*[sum(i) for i in matrix])
+print(*[sum(row[i] for row in matrix) for i in range(m)])
+_____________________________________
+является ли двумерный массив симметричным относительно главной диагонали
+n = int(input())
+ls = []
+for i in range(n):
+    ls.append(list(map(int, input().split())))
+l = 0
+r = 0
+for i in range(n):
+    for j in range(n):
+        if i != j:
+            if i > j:
+                l+= ls[i][j]
+            if i < j:
+                r += ls[i][j]
+print("Yes") if l==r else print("No")
+
+lst = []
+for i in range(int(input())):
+    lst.append(list(map(int, input().split())))
+flag = 'Yes'
+for i in range(len(lst)):
+    for j in range(len(lst[0])):
+        if lst[i][j] != lst[j][i]:
+            flag = 'No'
+print(flag)
+______________________________
+вывести  2 числа: сумму и номер строки, для которой эта сумма достигается. Если таких строк несколько, то выводится номер наименьшей из них. Не забудьте, что нумерация строк (спортсменов) начинается с 0.
+n,m = map(int,input().split())
+ls=[]
+suma = []
+for i in range(n):
+    ls.append(list(map(int, input().split())))
+for row in range(n):
+    suma.append(sum(ls[row]))
+print(max(suma))
+print(suma.index(max(suma)))
+
+rows, cols = map(int, input().split())
+matrix = [list(map(int, input().split())) for row in range(rows)]
+answer = list(map(sum, matrix))
+print(max(answer), answer.index(max(answer)), sep='\n')
+
+n = int(input().split()[0])
+s = [sum([int(i) for i in input().split()]) for _ in range(n)]
+print(max(s), s.index(max(s)), sep='\n')
+___________________________________
+rows, cols = map(int, input().split())
+c = [list(map(int, input().split())) for row in range(rows)]
+max_=0
+max_rows = 0
+max_cols = 0
+for i in range(len(c)):
+    if max(c[i]) > max_:
+        max_ = max(c[i])
+        max_rows = i
+        max_cols = c[i].index(max(c[i]))
+print(f"{max_}\n{max_rows} {max_cols}")
+c = [list(map(int, input().split())) for row in range(5)]
+for i in range(5):
+    for j in range(5):
+        if c[i][j] ==1:
+            row =i
+            colon =j
+            break
+print(abs(2-row) + abs(2-colon))#манхэттенское расстояние
+____________________________________________
+n,m = map(int,input().split()) 
+matrix = [] 
+mx = 0 
+l = [] 
+for i in range(n): 
+    k=list(map(int, input().split())) 
+    matrix.append(k) 
+for i in range(n): 
+    for j in range(m): 
+        if matrix[i][j] > mx: 
+            mx = matrix[i][j] 
+for i in range(n): 
+    if mx in matrix[i]: 
+        l.append(sum(matrix[i])) 
+    else: 
+        l.append(0) 
+print(l.index(max(l))) 
+
+a = []
+b = []
+n, m = map(int, input().split())
+for i in range(n):
+  a.append(list(map(int, input().split())))
+for i in range(n):
+  b.append([max(a[i]), sum(a[i])])
+
+print(b.index(max(b)))
+____________________________________
+a = []
+b = []
+n, m = map(int, input().split())
+for i in range(n):
+    a.append(list(map(int, input().split())))
+for i in range(n):
+    b.append(max(a[i]))
+print(b.count(max(b)))
+____________________________
+def pascal(n):
+    triangle = [[1]]
+      for i in range(n):
+        row = [1]
+        for j in range(1, len(triangle[i])):
+            row += [sum(triangle[i][j - 1: j + 1])]
+        row += [1]
+        triangle.append(row.copy())
+
+    return triangle[n]
+#--------------------ВЫЗОВ--------------------
+print(pascal(int(input())))
+
+rom math import factorial
+n = int(input())
+b = []
+for i in range(n+1):
+    b.append (int((factorial(n))/(factorial(i)*factorial(n-i))))
+print(b)
+________________
+def pascal():
+    n = int(input())
+    li_st =[] 
+for i in range(0, n+1):
+        row = [1]*(i+1)
+        for j in range(i+1):
+            if j!=0 and j!=i:
+                row[j] = li_st[i-1][j-1] + li_st[i-1][j]
+        li_st.append(row)
+    for i in li_st:
+        print(*i)
+pascal()
+
+[print(*row) for row in pascal(int(input()))]
+___________________________________
+Реализуйте функцию chunked(), которая принимает на вход список и число, задающее размер чанка (куска), а возвращает список из чанков указанной длины.
+def chunked():
+    txt = [i for i in input().split()]
+    x = int(input())
+    txt1 = []
+    for i in range(0, len(txt), x):
+        txt1.append(txt[i:i+x])
+    print(txt1)      
+chunked()
+
+def chunked(s, n):
+    if len(s) <= n:
+        return [s]
+    else:
+        return [[s[i] for i in range(n)]] + chunked(s[n:], n)
+print(chunked(input().split(), int(input())))
+
+def chunked(li, n):
+    return [li[i: i + n] for i in range(0, len(li), n)]
+print(chunked(input().split(), int(input())))
+______________________________
+cоздайте список, состоящий из делителей введенного числа.
+n = int(input())
+ls = [i for i in range(1, n+1) if n%i==0]
+print(ls)
+_______________
+n = int(input())
+ls = [i for i in range(n, (n**2)+1) if i%2>0 ]
+print(ls)
+_______________________________
+a, b = map(int,input().split())
+if a<=b:
+    ls =[i**2 for i in range(a, b+1)]
+    print(ls)
+elif a > b:
+    ls =[i**3 for i in range(b,a+1)]
+    print(ls[::-1])
+
+a, b = map(int, input().split())
+print([i**2 for i in range(a, b + 1)] or [i**3 for i in range(a, b - 1, -1)])
+__________________
+st = 'Create a list of the first letters of every word in this string'
+txt = [i for i in st.split()]
+ls = []
+for i in txt:
+    ls.append(i[0])
+print(ls) 
+
+print([a[0] for a in st.split()])
+___________________________________
+from string import ascii_uppercase
+n, a, s = int(input()), [], ascii_uppercase
+b = [s[i]*(i+1) for i in range(n)]
+print(b)
+
+[(i+1)*j for i,j in enumerate(['a','b','c','d'])]
+
+n = int(input())
+ls = [i for i in range(1, n+1)]
+ls1 = []
+for i in ls:
+    ls1.append(chr(64+i)*i)
+print(ls1)
+___________________________
+n = int(input())
+ls = [i for i in range(n)]
+ls1 = []
+for i in ls:
+    ls1.append(chr(65 + i))
+print(ls1)
+
+from string import ascii_uppercase
+print([ascii_uppercase[i] for i in range(int(input()))])
+
+print([chr(65 + i) for i in range(int(input()))])
+___________________________
+phrase = 'Take only the words that start with t in this sentence'
+print([i for i in phrase.split() if i[0] == 't' or i[0] == 'T'])
+_________________________
+ls = [i for i in input().split()]
+temp =[]
+osn =[]
+for i in range(0, len(ls)):
+    for j in range(0, len(ls)):
+        temp = ls[j:i+j+1]
+        if len(temp)==i+1:
+            osn.append(temp)
+print([[]] + osn[::1])
+_________________________
+alphabet_rus = [chr(i) for i in range(1072, 1104)]
+alphabet_eng = [chr(i) for i in range(97, 123)]
+abc_list = [chr(i) for i in range(ord('а'), ord('я') + 1)]
+frase = ' '.join(frase.split())
+_______________________________
+A = []
+n, m = int(input()), int(input())
+for i in range(n*m):
+    A.append(input())
+    if len(A) == m:
+        print(*A)
+        A.clear()
+
+n, m = int(input()), int(input())
+matrix = []
+for i in range(n):
+    row = []
+    for j in range(m):
+        row.append(input())
+    matrix.append(row)
+for i in range(n):
+    for j in range(m):
+        print(matrix[i][j], end=' ')
+    print()
+
+n,m = int(input()), int(input())
+[print(*[input() for i in range(m)]) for i in range(n)]
+_______________________________
+n, m = int(input()), int(input())
+arr = [[input() for _ in range(m)] for _ in range(n)]
+for row in arr:
+    print(*row)
+print()
+for i in range(m):
+    for j in range(n):
+        print(arr[j][i], end=' ')
+    print()
+___________________________________
+n = int(input())
+matrix = [list(map(int, input().split())) for i in range(n)]
+for i in range(n):
+    count = 0
+    for j in range(n):
+        x = (sum(matrix[i])/(len(matrix)))
+        if matrix[i][j]>x:
+            count +=1
+    print(count)
+______________________________
+n = int(input())
+matrix = [list(map(int, input().split())) for i in range(n)]
+x =matrix[0][0]
+for i in range(n):
+    for j in range(n):
+        if i>=j :
+            if matrix[i][j]>x:
+                x= matrix[i][j]
+print(x)
+
+n=int(input())
+matrix=[[int(i) for i in input().split()] for _ in range(n)]
+print(max(max(matrix[i][j] for j in range(i+1)) for i in range(n)))
+__________________________________________
+n=int(input())
+matrix=[[int(i) for i in input().split()] for _ in range(n)]
+x = matrix[0][0]
+for i in range(n):
+    for j in range(n):
+        if j <= i <= n - 1 - j or n - 1 - j <= i <= j: 
+            if matrix[i][j]>x:
+                x = matrix[i][j]
+print(x)
+Идея в том, чтобы обходить лишь треугольник №1, соотвествующие элементы в 3-х остальрных четвертях можно получить зеркальным отображением элементов первого треугольника, относительно двух осей. Такое отображение можно получить (среди прочего) с помощью побитового оператора ~. Например, элемент треугольника №2, зеркально симметричный элементу из треугольника №1, с индексами (i, j) - m[i][j] можно найти с помощью преобразования m[i][n-j-1] или m[i][-j-1] или более компактно: m[i][~j].
+
+n = int(input())
+a = [[*map(int, input().split())] for _ in range(n)]
+print(max(max(a[i][j], a[i][~j]) for j in range((n + 1) // 2) for i in range(j, n - j)))
+
+n = int(input())
+m = [[int(i) for i in input().split()] for j in range(n)]
+print(max([m[i][j] for i in range(n) for j in range(n) if j <= i <= n-1-j or n-1-j <= i <= j ]))
+______________________________
+n = int(input())
+matrix = [[int(i) for i in input().split()] for j in range(n)]
+sum_1 = 0
+sum_2 = 0
+sum_3 = 0
+sum_4 = 0
+for i in range(n):
+    for j in range(n):
+        if i != j or j != n-i-1:
+            if (i < j) and (i < n - 1 - j) :
+                sum_1 += matrix[i][j]
+            elif (i < j) and (i > n - 1 - j):
+                sum_2 += matrix[i][j]
+            elif (i > j) and (i >n-1-j):
+                sum_3 += matrix[i][j]
+            elif (i > j) and (i < n - 1 - j):
+                sum_4 += matrix[i][j]
+print(f"""Верхняя четверть: {sum_1}\nПравая четверть: {sum_2}\nНижняя четверть: {sum_3}\nЛевая четверть: {sum_4}"""  ) 
+
+n = int(input())
+matrix = [[int(i) for i in input().split()] for _ in range(n)]
+upper, lower, left, right = 0, 0, 0, 0
+for i in range(n):
+    upper += sum(matrix[i][i+1:n-i-1])
+    left += sum(matrix[i][:min(i, n-i-1)])
+    right += sum(matrix[i][max(n-i, i+1):])
+    lower += sum(matrix[i][n-i:i])
+
+
+n = int(input())
+mtr = [[int(ch) for ch in input().split()] for _ in range(n)]
+print('Верхняя четверть:', sum([mtr[i][j] for i in range(n) for j in range(n) if (i < j and i < n - 1 - j)]))
+print('Правая четверть:', sum([mtr[i][j] for i in range(n) for j in range(n) if (i < j and i > n - 1 - j)]))
+print('Нижняя четверть:', sum([mtr[i][j] for i in range(n) for j in range(n) if (i > j and i > n - 1 - j)]))
+print('Левая четверть:', sum([mtr[i][j] for i in range(n) for j in range(n) if (i > j and i < n - 1 - j)]))
+____________________________________
+заполните её таблицей умножения по формуле mult[i][j] = i * j
+n, m = int(input()), int(input())
+for i in range(n):
+    mult = []
+    for j in range(m):
+        mult.append(str(i * j).ljust(3))
+    print(*mult)
+
+m, n = int(input()), int(input())
+mult =[[i*j for i in range(n)] for j in range(m)]
+for i in range(m):
+    for j in range(n):
+        print(str(mult[i][j]).ljust(3), end=' ')
+    print()
+____________________________
+n, m = int(input()), int(input())
+matrix = []
+for i in range(n):
+    matrix.append(list(map(int, input().split())))
+x = -1000
+a = 0
+b = 0
+flag = False
+for i in range(n):
+    for j in range(m):
+        if matrix[i][j] > x:
+            x = matrix[i][j]
+            a=[i]
+            b=[j]
+            flag = True
+print(*a, *b)
+
+n, m = int(input()), int(input())
+matrix = [[int(i) for i in input().split()] for _ in range(n)]
+row, col = 0, 0
+for i in range(n):
+    for j in range(m):
+        if matrix[i][j] > matrix[row][col]:
+            row,col = i, j
+print(row, col)
+_______________________________
+flag = False
+n = int(input())
+matrix = [[int(i) for i in input().split()] for _ in range(n)]
+for i in range(n):
+    for j in range(n):
+        if matrix[i] != matrix[j]:
+            if matrix[i][j] != matrix[j][i]:
+                flag =True
+print("YES") if flag == False else print("NO")
+
+n, a, ans = int(input()), [], 'YES'
+for i in range(n):
+    a.append(list(map(int, input().split())))
+    if any(a[i][j] != a[j][i] for j in range(i)):
+        ans = 'NO'
+        break
+print(ans)
+
+n = int(input())
+matrix = [[int(j) for j in input().split()] for _ in range(n)]
+print('YES' if all([matrix[i][j] == matrix[j][i] for j in range(n) for i in range(n)]) else 'NO')
+
+Транспонирование матрицы с помощью функции zip.
+m = [tuple(map(int, input().split())) for _ in range(int(input()))]
+print(('NO', 'YES')[m == [*zip(*m)]])
+_________________________________________
+n, m = [int(input()) for __ in range(2)]
+matrix = [list(map(int, input().split())) for i in range(n)]
+max_x = max([max(i) for i in matrix])
+for i in range(len(matrix)):
+  if max_x in matrix[i]:
+    print(i, matrix[i].index(max_x))
+    break
+_____________________________________
+n, m = [int(input()) for __ in range(2)]
+matrix = [list(map(int, input().split())) for i in range(n)]
+j1, j2 = [int(_) for _ in input().split()]
+for i in range(n):
+    matrix[i][j1], matrix[i][j2] = matrix[i][j2],matrix[i][j1]
+for i in range(n):
+    for j in range(m):
+        print(matrix[i][j], end = " ")
+    print()
+
+for mx in matrix: print(*mx)
+_______________________________
+матрицу с элементами главной и побочной диагонали, поменявшимися своими местами.
+n = int(input())
+matrix = [[int(j) for j in input().split()] for _ in range(n)]
+for i in range(n):
+    matrix[i][i], matrix[n-i-1][i] = matrix[n-i-1][i], matrix[i][i]
+for mx in matrix:
+    print(*mx)
+_________________________________________
+n = int(input())
+matrix = []
+for i in range(n):
+    matrix.insert(0, list(map(int, input().split())))
+for mx in matrix:
+    print(*mx)
+
+matrix = [[int(item) for item in input().split()] for _ in range(n)]
+matrix.reverse()
+for row in matrix:
+    print(*row)
+
+res = [[int(x) for x in input().split()] for _ in range(n)]
+for j in range(n - 1, -1, -1):
+    print(*res[j])
+
+matrix = [input().split() for _ in range(int(input()))]
+[print(*r) for r in matrix[::-1]]
+
+# for i in range(n // 2):
+#     matrix[i], matrix[n - i - 1] = matrix[n - i - 1], matrix[i]
+for row in matrix:
+    print(*row)
+______________________________
+n = int(input())
+matrix = [[int(item) for item in input().split()] for _ in range(n)]
+for j in range(n):
+    for i in range(n-1, -1, -1):
+        print(matrix[i][j], end = " ")
+    print()
+
+for row in zip(*matrix[::-1]):
+    print(*row)
+
+n = int(input())
+a = [input().split() for _ in range(n)]
+[print(*[a[n-j-1][i] for j in range(n)]) for i in range(n)]
+_____________________________
+На шахматной доске 8×8 стоит конь. Напишите программу, которая отмечает положение коня на доске и все клетки, которые бьет конь. Клетку, где стоит конь, отметьте английской буквой N, клетки, которые бьет конь, отметьте символами *, остальные клетки заполните точками
+start = input()
+matrix = [['.' for _ in range(8)] for _ in range(8)]  # b6
+pos_x, pos_y = 8-int(start[1]), ord(start[0])-97
+matrix[pos_x][pos_y] = 'N'
+for i in range(8):
+    for j in range(8):
+        inx = (pos_x-i) * (pos_y-j)
+        if inx==2 or inx== -2:
+            matrix[i][j] = matrix[i][j].replace('.','*')
+for i in matrix:
+    print(*i)
+
+coordinates = input()
+matrix = []
+for i in range(8):
+    matrix.append(['.'] * 8)  # заполняем точками
+# переводим шахматные координаты в индексы матрицы
+x = 8 - int(coordinates[1])
+y = abs(97 - ord(coordinates[0]))
+matrix[x][y] = 'N'
+#ищем возможные позиции
+for i in range(8):
+    for j in range(8):
+        if abs((x - j) * (y - i)) == 2:
+            matrix[j][i] = '*'
+for row in matrix:
+    print(*row)
+______________________________
+n = int(input())
+matrix = [[0] * n for _ in range(n)]
+for i in range(n):
+    for j in range(n):
+            matrix[i][i] = 1
+            matrix[i][n - i - 1] = 1
+for i in range(n):
+    for j in range(n):
+        print(str(matrix[i][j]).ljust(3), end=' ')
+    print()
+
+n = int(input())
+res = [[1 if i == j or i == n - j - 1 else 0 for j in range(n)] for i in range(n)]
+for x in res:
+    print(*x)
+
+The bitwise operator ~ (pronounced as tilde) is a complement operator. It takes one bit operand and returns its complement. If the operand is 1, it returns 0, and if it is 0, it returns 1
+В нашем случае [ i ] становится [ -i ]  при использовании ~(тильды)
+a = int(input())
+for i in range(a):
+    sample = [0] * a
+    sample[i] = 1
+    sample[~i] = 1
+    print(*sample)
+____________________________
+n = int(input())
+for i in range(n):
+    for j in range(n):
+        if (i > j and i < n - 1 -j) or (i < j and i > n - 1 -j):
+            matrix[i][j] = 0 
+for i in range(n):
+    for j in range(n):
+        print(str(matrix[i][j]).ljust(3), end=' ')
+    print()
+for i in range(n//2+1):
+    row = matrix[i]
+    for j in range(i, n-i):
+        row[j] = 1       
+    matrix[i], matrix[-i-1] = row, row
+for i in range(n):
+    print(*matrix[i])
+    ______________________________
+    Прихожая Ивана имеет квадратную форму 4х4, вмещающую 16 плиток. Теперь Иван переживает, что узор из плиток, который у него получился, может быть не симпатичным. С точки зрения дизайна симпатичным узором считается тот, который не содержит в себе квадрата 2х2, состоящего из плиток одного цвета.
+matrix = []
+flag = True
+for p in range(4):
+    matrix.append(list(''.join(map(str,input().split())))) 
+for i in range(3):
+    for j in range(3):
+        if matrix[i][j] == matrix[i][j+1] and matrix[i][j] == matrix[i+1][j]:
+            flag = False
+print("Yes") if flag ==True else print("No")
+
+r2 = input()
+for _ in range(3):
+    r1, r2 = r2, input()
+    if r1[:2] == r2[:2] or r1[1:3] == r2[1:3] or r1[2:] == r2[2:]:
+        print('No')
+        break
+else:
+    print('Yes')
+________________________________________
+n, m = [int(i) for i in input().split()]
+mtrx1 = []
+mtrx2 = []
+count = 0
+for p in range(n):
+    mtrx1.append(list(''.join(map(str,input().split())))) 
+input()
+for p in range(n):
+    mtrx2.append(list(''.join(map(str,input().split()))))
+for i in range(n):
+    for j in range(m):
+        if mtrx1[i][j] == mtrx2[i][j]:
+            count +=1
+print(count)
+
+a = [input() for i in range(n)]
+input()
+b = [input() for i in range(n)]
+print(sum([a[r][c] == b[r][c] for r in range(n) for c in range(m)]))
+______________________________
+ассмотрим таблицу из n строк и n столбцов. Известно, что в клетке, образованной пересечением i-й строки и j-го столбца, записано число i × j. Строки и столбцы нумеруются с единицы.Дано целое положительное число x. Требуется посчитать количество клеток таблицы, в которых находится число x.
+n, x = [int(i) for i in input().split()]
+matrix = [[0 for i in range(n)] for _ in range(n)]
+count = 0
+for i in range(1,n+1):
+    for j in range(1, n+1):
+        if i * j == x:
+            count +=1
+print(count)
+
+n, x = map(int, input().split())можно ускорить решение, если понять, что можно идти просто до n*0.5
+s = 0
+for i in range(1, n + 1):
+    if x % i == 0 and x / i <= n:
+        s += 1
+print(s)
+
+n, x = map(int, input().split())
+sqr = x**.5
+cnt = -1 if sqr.is_integer() else 0
+up = min(n, x)
+for i in range(1, min(n, int(sqr)) + 1):
+    if x % i == 0 and x // i <= up:
+        cnt += 2 
+print(cnt) 
+_____________________________
+Оптимизированное решение со словарями и множествами ( я в курсе что это ещё не проходили, пожалуйста, не забрасывайте меня помидорами, скоро сами пройдёте эти темы и сможете вернутся к этой задаче, если захотите  ;)  ). Обычное решение требует полного перебора - это квадратичное время выполнения. Можно достичь времени выполнения близкого к линейному. В начале подсчитываем частоту повторений каждого цвета отдельно для домашних и для выездных форм с помощью словарей.  Затем превращаем ключи словарей в множества и находим их пересечение. Это даёт нам совпадающие цвета среди двух типов форм. Теперь для каждого из них нужно перемножить соответствующие значения повторений из каждого из двух словарей, чтобы учесть все возожные комбинации! Алгоритм состоит из двух линейных проходов - цикл считывания данных с одновременнным заполнением словарей и цикл обхода совпадающих цветов для двух типов формы.
+n, cnt_home, cnt_out = int(input()), {}, {}
+for _ in range(n):
+    h, o = map(int,input().split())
+    cnt_home[h] = cnt_home.get(h, 0) + 1
+    cnt_out[o] = cnt_out.get(o, 0) + 1
+print(sum(cnt_home[e] * cnt_out[e] for e in set(cnt_home) & set(cnt_out)))
+
+n = int(input())
+matrix = []
+count = 0
+matrix = [[int(item) for item in input().split()] for _ in range(n)]
+for i in range(n):
+    for j in range(n):
+        if matrix[i][0] == matrix[j][1]:
+            count +=1
+print(count)
+
+a,b = [],[]
+for i in range(int(input())):
+    x,y = map(int,input().split())
+    a.append(x)
+    b.append(y)
+print(sum([b.count(i) for i in a]))
+_________________________
+colors = ["C", "M", "Y"]
+black_white =["W", "G", "B"]
+n, m = [int(i) for i in input().split()]
+matrix = []
+flag = True
+for p in range(n):
+    matrix.append(list(''.join(map(str,input().split()))))
+for i in range(n):
+    for j in range(m):
+        if matrix[i][j] in colors:
+            flag = True
+        else:
+            flag = False
+print("#Color") if flag == True else print("#Black&White")
+___________________________________
+. * . *
+* . * .
+. * . *
+n, m = map(int,input().split())
+matrix = [([i for i in ('*' * int(m))]) for i in range(int(n))]
+for i in range(len(matrix)):
+        for j in range(i%2, m, 2):
+            matrix[i][j] = "."     
+for i in matrix:
+    print(*i)
+
+n, m = [int(i) for i in input().split()]
+board = [['.'] * m for _ in range(n)]
+for i in range(n):
+    for j in range(1 - i % 2, m, 2):
+        board[i][j] = '*'
+for row in board:
+    print(*row)
+
+for i in range(n):
+    row = ['.' if (i + j) % 2 == 0 else '*' for j in range(m)]
+    print(*row)
+___________________
+a = []
+s = 0
+n = int(input())    # количество строк и столбцов матрицы
+for i in range(n):
+    b = []    # создание пустого списка
+    b = list(map(int, input().split()))    # заполнение списка
+    a.append(b)    # добавление списка в строку матрицы
+for i in range(n):    # обход строк матрицы
+    for j in range(n):    # обход столбцов матрицы
+        if i == j:    # если текущий элемент находится на главной диагонале 
+            s += a[i][j]    # суммирование элемента
+print(s)
+
+n, s = int(input()), 0
+m = [[int(i) for i in input().split()] for _ in range(n)]
+
+for i in range(n):
+    s += m[i][i]
+_________________________
+n = int(input())
+a =[]
+for i in range(n):
+    b = [] 
+    b = list(map(int, input().split()))
+    a.append(b)
+for i in range(n):
+    for j in range(n):
+        print(a[j][i], end = " ")
+    print()
+
+a = [list(map(int, input().split())) for i in range(int(input()))]# инициализация
+_______________________________
+n = int(input())
+a = [list(map(int, input().split())) for i in range(n)]
+for i in range(n-1, -1, -1):
+    for j in range(n-1, -1, -1):
+        print(a[j][i], end =" ")
+    print() 
+__________________________
+n, m = map(int, input(). split())
+ls = []
+for i in range(n):
+    ls.append(list(map(int, input().split())))   
+for i in range(n):
+    for j in range(m-1, -1, -1):
+        print(ls[i][j], end =" ")
+    print() 
+
+n, m = map(int, input().split())
+mtrx = [list(map(int, input().split())) for _ in range(n)]
+[print(*[mtrx[i][j] for j in range(m-1,-1,-1)], sep=' ') for i in range(n)]
+_______________________________
+В первой строке вам необходимо вывести N чисел – суммы элементов массива для каждой строки в отдельности. Во второй строке в аналогичном формате выведите M чисел – суммы элементов для каждого столбца
+n, m = map(int, input(). split())
+ls = []
+for i in range(n):
+    ls.append(list(map(int, input().split()))) 
+for i in range(n):
+    sum = 0
+    for j in range(m):
+        sum += ls[i][j]
+    print(sum, end = " ")                 
+print()
+for j in range(m):
+    sum1 = 0
+    for i in range(n):
+        sum1 += ls[i][j]
+    print(sum1, end=' ')
+
+row, col = map(int, input().split())
+matrix = [list(map(int, input().split())) for row in range(row)]
+for row in matrix:
+	print(sum(row), end=' ')
+print()
+for x in range(col):
+	print(sum([row[x] for row in matrix]), end=' ')
+n,m = map(int,input().split())
+l=[]
+for i in range(n):
+    l.append(list(map(int, input().split())))
+for row in range(n):
+    print(sum(l[row]), end=' ')
+print()
+for stolb in range(m):
+    s=[]
+    for row in range(n):
+        s.append(l[row][stolb])
+    print(sum(s[::]), end=' ')
+    s=[]
+
+n, m = map(int, input().split())
+matrix = [[int(i) for i in input().split()] for i in range(n)]
+print(*[sum(i) for i in matrix])
+print(*[sum(row[i] for row in matrix) for i in range(m)])
+_______________________________
+является ли двумерный массив симметричным относительно главной диагонали
+n = int(input())
+ls = []
+for i in range(n):
+    ls.append(list(map(int, input().split())))
+l = 0
+r = 0
+for i in range(n):
+    for j in range(n):
+        if i != j:
+            if i > j:
+                l+= ls[i][j]
+            if i < j:
+                r += ls[i][j]
+print("Yes") if l==r else print("No")
+
+lst = []
+for i in range(int(input())):
+    lst.append(list(map(int, input().split())))
+flag = 'Yes'
+for i in range(len(lst)):
+    for j in range(len(lst[0])):
+        if lst[i][j] != lst[j][i]:
+            flag = 'No'
+print(flag)
+
+n = int(input())
+a = []
+u = True
+for i in range(n):
+    a.append(list(map(int, input().split())))
+for i in range(n):
+    for j in range(n):
+        if a[j][i] != a[i][j]:
+            u = False
+            break
+if u:
+    print('Yes')
+else:
+    print('No')
+_______________________________
+вывести  2 числа: сумму и номер строки, для которой эта сумма достигается. Если таких строк несколько, то выводится номер наименьшей из них. Не забудьте, что нумерация строк (спортсменов) начинается с 0.
+n,m = map(int,input().split())
+ls=[]
+suma = []
+for i in range(n):
+    ls.append(list(map(int, input().split())))
+for row in range(n):
+    suma.append(sum(ls[row]))
+print(max(suma))
+print(suma.index(max(suma)))
+
+rows, cols = map(int, input().split())
+matrix = [list(map(int, input().split())) for row in range(rows)]
+answer = list(map(sum, matrix))
+print(max(answer), answer.index(max(answer)), sep='\n')
+
+n = int(input().split()[0])
+s = [sum([int(i) for i in input().split()]) for _ in range(n)]
+print(max(s), s.index(max(s)), sep='\n')
+________________________
+создания вложенного списка
+n, m = int(input()), int(input())    # считываем значения n и m
+my_list = []
+for _ in range(n):
+    my_list.append([0] * m)
+print(my_list)
+
+n, m = int(input()), int(input())    # считываем значения n и m
+my_list = [0] * n
+for i in range(n):
+    my_list[i] = [0] * m
+print(my_list)
+
+n, m = int(input()), int(input())    # считываем значения n и m
+my_list = [[0] * m for _ in range(n)]
+print(my_list)
+
+n = int(input())
+ls = [ [j for j in range(1, n+1)] for i in range(1, n+1)]
+print(*ls, sep = "\n")
+
+n = int(input())
+ls = [ [j for j in range(1, i+1)] for i in range(1, n+1)]
+print(*ls, sep = "\n")
+treugolnik
+____________________________
+примере мы перебирали индексы элементов
+my_list = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
+for i in range(len(my_list)):
+    for j in range(len(my_list[i])):
+        print(my_list[i][j], end=' ') 
+    print() 
+
+перебирать сами элементы вложенного списка:
+my_list = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
+for row in my_list:
+    for elem in row:
+        print(elem, end=' ')
+    print()
+____________________________
+n = int(input())
+mtrx =[]
+for i in range(n):
+    mtrx.append([0]* n)
+for i in range(n):
+    for j in range(n):
+         if i+j == n-1:
+            mtrx[i][j] = 1
+         if i+j >= n:
+            mtrx[i][j]=2
+for i in mtrx:
+    print(*i)
+______________________
+my_list = [[1, 9, 8, 7, 4], [7, 3, 4], [2, 1]]
+sum(my_list, [])
+>>>[1, 9, 8, 7, 4, 7, 3, 4, 2, 1]
+sum(sum(my_list, []))
+>>>46
+my_list = [[1, 9, 8, 7, 4], [7, 3, 4], [2, 1]]
+total = 0
+for i in range(len(my_list)):
+    for j in range(len(my_list[i])):
+        total += my_list[i][j]
+print(total)
+
+my_list = [[1, 9, 8, 7, 4], [7, 3, 4], [2, 1]]
+total = 0
+for row in my_list:
+    for elem in row:
+        total += elem
+print(total)
+
+my_list = [[1, 9, 8, 7, 4], [7, 3, 4], [2, 1]]
+total = 0
+for row in my_list:      # в один цикл
+    total += sum(row)
+print(total)
+_________________________________
+ls = [1, 2, 3, 4, 5, 6, 5, 3, 6, 2, 0, 4, 5,10, 1, 9,6] 
+count = [0] * 11
+for i in ls:
+    count[i] += 1
+print(count)
+
+ls = [1, 2, 3, 4, 5, 6, 5, 3, 6, 2, 0, 4, 5,10, 1, 9,6] 
+count = [0] * 11
+for i in ls:
+    count[i] += 1
+for i in range(11):
+    print(i, count[i])
+# На вход вашей программе поступает положительное целое число n, а ваша задача вывести в порядке возрастания все цифры, которые встречались в этом числе, и напротив каждого также необходимо вывести сколько раз данная цифра встречалась в числе n
+ls = list(map(int, input()))#преобразовать входящее число в список
+count = [0] * 10
+for i in ls:
+    count[i] += 1
+for i in range(10):
+	if count[i] > 0:
+        print(i, count[i])
+________________________
+s = "hsdiuhsk,dnius8735lkcfj djgrk lsurñoqe"
+letters = [0] * 26
+for i in s.lower():
+    if i >= "a" and i <= "z" :
+        nomer = ord(i)-97
+        letters[nomer] += 1
+for i in range (26):
+    if letters[i] > 0:
+        print(chr(i+97), letters[i])
+	    print(chr(i+97) * letters[i], end = "")
+______________________________
+a = []
+import random
+for i in range(10):
+    a.append(random.randint(-10, 10))
+count = [0]*21 # range(-10,10)=>21
+for i in a : 
+    count[i + 10] += 1 # smeshaemsya na samoe bolshoe chislo
+print(a)
+for i in range(21): 
+    if count[i] > 0:
+        print((i-10), count[i]) # neytralisyem cmesheniefor i
+	       print((str(i-10) + ´ ´) * count[i])
+n =int(input())
+ls = list(map(int,input().split()))
+count = [0] * (201)
+for i in ls : 
+    count[i + 100] += 1 
+for i in range(201):
+    if count[i] > 0:
+        print((str(i-100) + " ") * count[i], end ="")
+
+n = int(input())
+s = list(map(int, input().split()))
+s2 = []
+for i in range(n):
+  s2.append(min(s))
+  s.remove(min(s))
+print(*s2)
+____________________________________
+for <переменная> in <объект>:
+    for <переменная> in <объект>:
+        <действие>
+    <действие>
+for i in range(10):
+    for j in range(i): 
+        print(j, end = "")
+    print()
+
+for i in range(1, 4):
+    for j in range(10, 13): 
+        print(i, j)
+
+from string import printable
+"0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!\"#$%&'()*+,-./:;<=>?@[\]^_`{|}~»
+from string import printable
+for b1 in printable:
+    for b2 in printable:
+        for b3 in printable:
+            print(b1, b2, b3)
+________________________________
+for j in range(1, 10): 
+    for i in range(1, 11):
+        print(i, "*", j, "=", i *j, end = «»)
+    print()
+_____________________
+a = list(map(int, input().split()))
+for i in a:
+    print(i*"*", sep = " ")
+_____________________________________
+x = input().upper().split() 
+print("-".join(x[0]), "-".join(x[1]))
+
+a = input().upper().replace('','-').split()
+print(a[0][1:-1],a[1][1:-1])
+
+
+print(*['-'.join(w) for w in input().upper().split()])
+_______________________________
+im, otch, fam = input().split()
+print(f"{fam} {im[0]}.{otch[0]}.")
+
+n, f, s = input().split()
+print(s + " " + n[0] + "." + f[0] + ".")
+_____________________________ сортировки пузырьком. 
+n = int(input())
+ls = [int(i) for i in input().split()]
+count = 0
+for run in range(n-1):
+    for j in range(n-1):
+        if ls[j]> ls[j+1]: 
+            count+=1
+            ls[j],ls[j+1] = ls[j+1],ls[j]
+print(*ls)
+print(count)
+
+gc = 0
+for i in range(n):
+    c = 0
+    for j in range(n - i - 1):
+        if l[j] > l[j+1]:
+            l[j], l[j+1] = l[j+1], l[j]
+            c += 1
+    gc += c
+    if c == 0: break
+_______________________________________
+ls = [i for i in input().split()]
+ls1 = []
+ls1.append([ls[0]])
+for i in range(1, len(ls)):
+    if ls[i] in ls1[-1]: 
+        ls1[-1].append(ls[i])
+
+    else:
+        ls1.append([ls[i]])
+print(ls1)
+_______________________________
+s = 0
+for i in range(1000, 10000):
+    if sum(map(int, str(i))) == 20:
+        s += i
+print(s)
+
+summa = 0
+for i in range(1000, 10000):
+    if (i // 1000) + (i // 100 % 10) + (i // 10 % 10) + (i % 10) == 20:
+        summa += i
+print(summa)
+
+print(sum(i for i in range(1000, 10000) if sum(map(int, str(i))) == 20))
+
+count = 0
+for i in range(1,10):
+    for j in range (0,10):
+        for k in range(0,10):
+            for l in range(0,10):
+                if i+j+k+l ==20:
+                    num = i*1000 + j*100 + k * 10 +l
+                    count += num
+print(count)
+_________________________Сортировка вставками
+
+n = int(input())
+ls = list(map(int,input().split()))
+for i in range(len(ls)-1):
+    for j in range(len(ls)-1):
+        if ls[j] > ls[j+1]:
+            ls[j+1],ls[j] = ls[j],ls[j+1]
+print(*ls)
+
+n = int(input()) # Длина массива чисел
+s = list(map(int, input().split())) #Массив чисел
+for i in range(n): # проходим по массиву n раз
+    for j in range(i,0,-1):
+        if s[j]<s[j-1]:                  #Если число меньше чем предыдущее, 
+            s[j],s[j-1] = s[j-1],s[j]    # меняем их местами
+        else:                            # если условие не выполняется, выходим из внутреннего цикла, т.к.предыдущие числа отсортированы
+            break
+print (*s)
+____________________________
+numbers = (12.5, 3.1415, 2.718, 9.8, 1.414, 1.1618, 1.324)
+print(min(numbers) + max(numbers))
+print(sum((min(numbers), max(numbers))))
+_____________________
+list comprehentions:
+A[x**2 for x in range(10)]
+b =[x**2 for x in A if x%2==0]
+b = [(0 if x<0 else x**2) for x in A if x%2 == 0]
+n, m = map(int,input().split())
+matrix = []
+mtrx =[]
+for i in range(n):
+    for j in range(m):
+        matrix.append((i+j)%m +1) 
+for i in range(0, len(matrix), m):
+    mtrx.append(matrix[i:i+m])
+for j in mtrx:
+    print(*j)
+
+n, m = [int(i) for i in input().split()]
+matrix = [[0] * m for _ in range(n)]
+for i in range(n):
+    for j in range(m):
+        matrix[i][j] = (i + j) % m + 1         
+for i in range(n):
+    for j in range(m):
+        print(str(matrix[i][j]).ljust(3), end=' ')
+    print()
+
+n, m = map(int, input().split())
+row = list(range(1, m + 1))
+for _ in range(n):
+    print(*row)
+    x = row.pop(0)
+    row.append(x)
+
+n, m = map(int, input().split())
+a = [i for i in range(1, m+1)]
+for i in range(n):
+    print(*a)
+    a = a[1:] + a[:1]
+
+n, m = map(int, input().split())
+s = [i for i in range(1, m+1)]
+for i in range(n):
+    print(*s)
+    s.append(s[0])
+    del s[0]
+_______________________________________
+На вход программе подаются два натуральных числа n, m.Напишите программу, которая создает матрицу размером n×m заполнив её "змейкой" в соответствии с образцом
+n, m = map(int,input().split())
+mtrx = []
+for i in range(1, n*m+1):
+    mtrx.append(i)
+mtrx1 = []
+
+for i in range(0, len(mtrx), m):
+    mtrx1.append(mtrx[i:i+m])
+
+for i in range(1, n, 2):
+        mtrx1[i].reverse()
+for i in range(n):
+    for j in range(m):
+        print(str(mtrx1[i][j]).ljust(3), end=' ')
+    print()
+
+n, m = [int(i) for i in input().split()]
+matrix = [[0] * m for _ in range(n)]
+for i in range(n):
+    for j in range(m):
+        matrix[i][j] = i * m + j + 1
+    if i % 2:
+        matrix[i].reverse()
+for i in range(n):
+    for j in range(m):
+        print(str(mtrx1[i][j]).ljust(3), end=' ')
+    print()
+
+n, m = map(int, input().split())
+a = [[str(j + i*m).ljust(3) for j in range(1, m+1)][::(-1)**i] for i in range(n)]
+for el in a:
+  print(*el)
+
+n, m = map(int, input().split())
+for i in range(n):
+    for j in range(m):
+        print(str(i * m + j + 1).ljust(3) if i % 2 == 0 else str((i + 1) * m - j).ljust(3), end=' ')
+    print()
+_______________________________________
+n, m = map(int, input().split())
+x = 1
+mtrx = [[0] * m for _ in range(n)]
+for j in range(m + n - 1):
+    for i in range(n):
+        if j-i in range(m):
+            mtrx[i][j-i] = x
+            x +=1  
+for i in range(n):
+    for j in range(m):
+        print(str(mtrx[i][j]).ljust(3), end=' ')
+    print()
+
+n, m = map(int, input().split())
+mt = [[''] * m for i in '1'* n]
+d = 1
+for k in range(1, n + m + 1):
+    for i in range(n):
+        for j in range(m):
+            if i + j + 1 == k:
+                mt[i][j] = str(d).ljust(3)
+                d += 1
+[print(*r, sep='') for r in mt]
+
+# Принимаем параметры матрицы
+
+# Создаем скелет матрицы
+matrix = [[0] * m for i in range(n)]
+# Задаем отсчет с единицы
+d = 1
+for k in range(1, n + m):               # Цикл перебирающий сумму индексов в диагонали
+    for i in range(n):                  # Перебираем строки
+        for j in range(m):              # Перебираем столбцы
+            if i + j + 1 == k:          # Выявляем ячейки, относящиеся к искомой диагонали
+                matrix[i][j] = d        # Присваиваем обнаруженной ячейке порядковый номер
+                d += 1                  # Обновляем счетчик
+# Распечатываем полученную матрицу
+for row in range(n):
+    for col in range(m):
+        print(str(matrix[row][col]).ljust(3), end=' ')
+    print()
+__________________________________
+Напишите программу, которая принимает на вход матрицу, выполняет её транспонирование и выводит результат.
+row,col = [int(i) for i in input().split()]
+mtrx = []
+for i in range(row):
+    matrix = [] 
+    matrix = list(map(int, input().split()))
+    mtrx.append(matrix)
+for i in range(col):
+    for j in range(row):
+        print(mtrx[j][i], end = " ")
+    print()
+
+n, m = map(int, input().split())
+for t in zip(*[input().split() for _ in range(n)]):
+    print(*t)
+
+nr, nc = map(int, input().split())
+matrix = [input().split() for i in range(nr)]
+for i in range(nc):
+    print(*(matrix[j][i] for j in range(nr)))
+
+n, m = [int(i) for i in input().split()]
+matrix =[j for i in [input().split() for k in range(n)] for j in i]
+for i in range(m):
+    print(*matrix[i::m])#я list comprehension . 
+
+#пример решения из документации питон с помощью компоновки списка
+matrix = [
+...     [1, 2, 3, 4],
+...     [5, 6, 7, 8],
+...     [9, 10, 11, 12],
+... ]
+>>> transposed = []
+>>> for i in range(4):
+...     transposed.append([row[i] for row in matrix])
+...
+>>> transposed
+[[1, 5, 9], [2, 6, 10], [3, 7, 11], [4, 8, 12]]
+_____________________________
+n = int(input())
+mtrx = []
+for i in range(n):
+    matrix = [] 
+    matrix = list(map(int, input().split()))
+    mtrx.append(matrix)
+square = int(input())
+squared = [[cell ** square for cell in n] for n in mtrx]
+print(squared)
+vosvedenie v ctepen kajdogo elementa
+____________________
+list comprehentions:
+A[x**2 for x in range(10)]
+b =[x**2 for x in A if x%2==0]
+b = [(0 if x<0 else x**2) for x in A if x%2 == 0]
+
+def mult_matrisa:
+	n, m = map(int,input().split())
+	matrix_a = [[int(i) for i in input().split()] for j 		in range(n)]
+	input()
+	matrix_b = [[int(i) for i in input().split()] for j 		in range(n)]
+def print_matrix(arr):
+	for row in arr:
+		for elem in row:
+			print(str(elem).ljust(4,»»), end =«»)
+		print()
+def matrix_multiplay(arr1,arr2):
+	assert len(arr1) == len(arr2[0]), «failed»
+	result =[]
+	for i in range(len(arr1):
+		row =[]
+		for j in range(len(arr2[0])):
+			_sum =0
+			for n in range(len(arr[1])):
+				_sum +=arr1[i][n] * arr2[n][j]
+
+			row.append(_sum)
+		result.append(row)
+_____________________________________
+my_list = [1, 2, 3]
+my_list.insert(0, 0)    # index = 0 - вставляем в начало
+print(my_list)          # [0, 1, 2, 3]
+
+my_list.insert(10, 4)   # Индекс выходит за границы списка -  просто добавим в конец
+print(my_list)          # [0, 1, 2, 3, 4]
+
+my_list.insert(-10, -1) # Индекс выходит за границы в минус - добавим в начало
+print(my_list)          # [-1, 0, 1, 2, 3, 4]
+
+my_list = [1, 2, 3]
+my_list.insert(1, 1.5)  # Вставим между 1 и 2 (индексация с нуля!)
+# То есть вставляется на позицию с указанным индексом, а то значение что на ней было 
+# и те что правее - сдвигаются на 1 индекс вправо
+print(my_list)          # [1, 1.5, 2, 3]
+_____________________________________
+kak dobavit element v spisok y vuvesti cheres capaytyu
+n=int(input())
+a=[]
+for x in range(n):
+    s=input()
+    if "соль" not in s:
+        a.append(s)
+print( *a, sep=", " )
+_______________________
+sokrashenie slova
+n=int(input())
+for w in range(n):
+    w=input()
+    if len(w)>=10:
+        print(w[0], len(w)-2, w[-1], sep="")
+    else:
+        print(w)
+________________________numbers = [-35, 68, -91, 23, -92, -82]
+n=len(numbers)
+for i in range(n):
+     numbers[i] = numbers[i]*2
+print(numbers)
+______________________
+n=int(input())
+a=[]
+for w in range(n):
+    w=input()
+    a.append(w)
+print(a)
+——————————————————————
+lettra=input()
+storka=input()
+for i in stroka.split():
+    if lettra in i:
+        print(i)
+——————————————————
+s = 'ab12c59p7dq'
+digits = []
+for symbol in s:
+    if '1234567890'.find(symbol) != -1:
+        digits.append(int(symbol))
+print(digits)
+———————————————————
+s="aertiokfhydrs"
+vowels="aeiou"
+n=len(s)
+for i in range(n-1):
+    if s[i] in vowels:
+        print(s[i])
+———————————————————————
+s= input()
+if s.find('f') == -1:
+    print('NO')
+elif s.find('f') == s.rfind('f'):
+    print(s.find('f'))
+else:
+    print(s.find('f'),s.rfind('f'))
+—————————————————
+a=list(map(int,input().split()))
+r=int(input())
+index=a.index(r)
+print(index)
+————————————————
+a=list(map(int,input().split()))
+b=[]
+for i in a:
+    if i>0:
+        b.append(i)
+print(min(b)) if len(b)>0 else print("Empty")
+———————————————————
+
+s = input()
+nx = 0
+mx_ch=""
+for i in s:
+    n = s.count(i)
+    if n >= nx:
+        nx = n
+        mx_ch=i
+print(mx_ch)
+
+s = input()[::-1]; l = [s.count(i) for i in s]; print(s[l.index(max(l))])
+
+a = input()[::-1]
+z = max(a, key = a.count)
+print(z)
+
+string = input() 
+often = 0 
+while len(string) > 0:
+    count = string.count (string[0]) 
+    if count >= often:
+        often = count 
+        new_string = string[0] 
+    string = string.replace(string[0], '' )
+print(new_string)
+—————————————————
+a= int(input())
+b= int(input())
+for i in range(a, b+1):
+    print(chr(i), end=" ")
+——————————————————
+s= input()
+for i in s:
+    print(ord(i), end=" ")
+————————————————
+print(sum(int(input()) for _ in range(int(input()))))
+
+n=int(input())
+suma=0
+for i in range(n):
+    a=int(input())
+    suma+=a
+print(suma)
+—————————————————————cesar
+n=int(input())
+s=input()
+for i in s:
+    x=ord(i)-n
+    if x<97:
+        x+=26
+    print(chr(x), end="")
+
+a = int(input()) 
+b = input() 
+c = 'abcdefghijklmnopqrstuvwxyz' 
+for i in b:
+    t = c.find(i)-a
+    print(c[t], end='')
+Если посмотреть на формулу в вики - x - символ, что надо вычислить, y - исходный символ шифрованного текста, к - сдвиг, n - размер алфавита (26 в нашем случае). Самое сложное тут понять, что mod - это ни что иное, как остаток от деления %
+В данной формуле полагается, что символы алфавита кодируются в диапазоне от 0 до n - 1, соответственно, можно перевести код любого символа из ASCII в "нашу" кодировку (0 - 25), просто отняв от него ASCII код первого символа алфавита (чтоб не лазить лишний раз в таблицу и не смотреть на магические числа, просто берем его код при помощи ord -  ord('a'))
+Соответственно, обработка каждого символа происходит следующим образом:
+Берем его ASCII код: ord(c)
+Нормируем в диапазон 0 - 25: -start
+Отнимаем сдвиг (можем получит отрицательное число): - n
+Берем остаток от деления на 26 (мощность алфавита). Тут самое интересное - если исходное число a отрицательное, то в результате операции получим положительное число b, такое, что выполняется равенство b = 26 + a. Это вместо ифов, проверяющих, не ушли ли мы "ниже" минимального значения и накидывания 26 сверху
+Не забываем "денормировать" результат обратно к ASCII - + start
+Берем символ, соответствующий полученному коду chr(code)
+abc = ' abcdefghijklmnopqrstuvwxyz'
+n = int(input())
+inp = input().strip()
+res = [abc[(abc.index(c) + n) % len(abc)] for c in inp]
+print('Result: "' + ''.join(res) + '"')
+
+abc =«abcdefghijklmnopqrstuvwxyz'
+n = int(input())
+inp = input().strip()
+res = [abc[(abc.index(c) + n) % len(abc)] for c in inp]
+print('Result: "' + ''.join(res) + '"')
+
+alphabet = ' abcdefghijklmnopqrstuvwxyz'
+shift = int(input())%27
+encryptor = dict(zip(alphabet, alphabet[shift:] + alphabet[:shift]))
+print('Result: "' + ''.join(encryptor[elem] for elem in input().strip()) + '"')
+alphabet = ' abcdefghijklmnopqrstuvwxyz'
+shift = int(input())%27
+encryptor = dict(zip(alphabet, alphabet[shift:] + alphabet[:shift]))
+print('Result: "' + ''.join(encryptor[elem] for elem in input().strip()) + '"')
+____________________________
+Линейный поиск, также известный как последовательный поиск, этот метод используется для поиска элемента в списке. Линейный поиск является одним из базовых алгоритмов, с которым вы должны познакомиться, изучая программирования. Суть алгоритма в следующем: вы должны проверять каждый элемент списка последовательно один за другим, пока не найдете интересующий вас элемент или пока не закончится весь список.
+a=list(map(int,input().split()))
+r=int(input())
+n=len(a)
+for i in range( n):
+	if a[i]==r:
+        print(i+1)
+else
+	print("ErrorValue")
+
+
+ls = open(0).read().split()
+[exit(print(i + 1)) for i in range(len(ls[:-1])) if ls[-1] == ls[i]]
+print('ErrorValue') 
+
+————————————————
+print(list(range(1,int(input())+1)))
+———————————
+spisok buks
+n= int(input())
+a=[]
+for i in range(97,n+97):
+    s=chr(i)
+    a+=s
+print(a)
+
+n = int(input())
+s = ''
+for i in range(n):
+    s += chr(97 + i)
+print(list(s))
+
+print([chr(i) for i in range(97, 97 + int(input()))])
+______________________________________________
+numbers = [12.5, 3.1415, 2.718, 9.8, 1.414, 1.1618, 1.324]
+print(min(numbers)+ max(numbers))
+_________________________________________
+evens = [2, 4, 6, 8, 10, 12, 14, 16, 18, 20]
+average = sum(evens)/len(evens)
+print(average)
+
+rainbow = ['Red', 'Orange', 'Yellow', 'Green', 'Blue', 'Indigo', 'Violet']
+rainbow[3] = "Зеленый"
+rainbow[-1] = "Фиолетовый"
+print(rainbow)
+
+rainbow = ['Red', 'Orange', 'Yellow', 'Green', 'Blue', 'Indigo', 'Violet']
+rainbow[rainbow.index('Green')] = "Зеленый"
+rainbow[rainbow.index('Violet')] = "Фиолетовый"
+print(rainbow)
+
+languages = ['Chinese', 'Spanish', 'English', 'Hindi', 'Arabic']
+print(languages[::-1])
+
+numbers1 = [1, 2, 3]
+numbers2 = [6]
+numbers3 = [7, 8, 9, 10, 11, 12, 13]
+print((numbers1*2) + (numbers2 *9) +(numbers3) )
+__________________________________________ 
+n=map(int,input())
+n = list(n)
+chet=0
+nechet=0
+for i in range(1,len(n), 2):
+    chet+=n[i]
+for i in range(0, len(n),2):
+        nechet+=n[i]
+if (chet-nechet)%11==0 or chet == nechet:
+    print("YES")
+else:
+    print("NO")
+————————————————————————————
+#Droid R2-D2
+a = [int(i) for i in input() if i.isdigit()]
+n=[int(_) for _ in input() if _ in '0123456789']
+print(len(n), sum(n))
+
+s, n = list(input()), []
+for i in s:
+    if i.isdigit():
+         n.append(int(i)) 
+print(len(n), sum(n))
+———————————————————
+n= int(input())
+mylist=[]
+for i in range(n):
+    x=input()
+    mylist.append(x)
+print(mylist)
+
+n = int(input())
+lst = [input() for _ in range(n)]
+print(lst)
+
+l = list()
+for _ in range(int(input())):
+    l.append(input())
+print(l)
+___________________________
+n= int(input())
+mylist=[]
+for i in range(n):
+    x=int(input())**3
+    mylist.append(x)
+print(mylist)
+
+lst = list()
+for _ in range(int(input())):
+    lst.append(int(input()) ** 3)
+print(lst) 
+___________________
+n= int(input())
+mylist=[]
+for i in range(1, n+1):
+    if n%i==0:
+        mylist.append(i)
+print(mylist)
+
+n = int(input())
+print([i for i in range(1, n // 2 + 1) if n % i == 0] + [n])
+_______________________________________
+alf=[]
+count=0
+for i in range(97,123):
+    count+=1
+    bukva=chr(i)
+    alf.append(bukva*count)
+print(alf)
+
+l = []
+for i in range(ord('z') - ord('a') + 1):
+    l.append(chr(ord('a') + i) * (i + 1))
+print(l)
+____________________________________
+n= int(input())
+mylist=[]
+ls2=[]
+for i in range(n):
+    x=int(input())
+    mylist.append(x)
+for j in range(len(mylist)-1):
+    ls2.append(mylist[j]+mylist[j+1])
+print(ls2)
+
+n = количество вводимых чисел
+в list_tmp сразу кладем число, что бы у списка был доступен индекс [0] (во избежание out of range)
+list_1 оставляем пустым
+В цикле, на первой же итерации, добавляем еще значение в tmp
+И сразу добавляем сумму значений с индексом [i] и [i + 1] из списка tmp в список list_1
+Принт list_1
+
+n = int(input())
+a = int(input())
+s = []
+for i in range(n-1):
+    b = int(input())
+    s.append(a+b)
+    a=b
+print(s)
+__________________________
+a = []
+n = int(input())
+for i in range(n):
+    a.append(int(input()))
+del a[1::2]
+print(a)
+
+a = [int(i) for i in [input() for _ in range(int(input()))]]
+del a[1::2]
+print(a)
+______________
+numbers = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+for i in range(len(numbers)):
+    print(numbers[i])
+_______________________________
+count=0
+numbers = [1, 78, 23, -65, 99, 9089, 34, -32, 0, -67, 1, 11, 111]
+for i in numbers:
+    x = i**2
+    count+=x
+print(count)
+____________________
+n = int(input())
+ls1 =[]
+ls2 =[]
+for i in range(n):
+    x = int(input())
+    ls1.append(x)
+    print(x)
+print()
+for j in ls1:
+    f=(j**2)+(2*j)+1
+    ls2.append(f)           
+    print(f)  
+
+l = []
+for i in range(int(input())):
+    i = (int(input()))
+    print(i)
+    l.append(i**2+2*i+1)
+print()
+print(*l, sep='\n')
+
+function, x = [], []
+for i in range(int(input())):
+    x.append(int(input()))
+    function.append(x[i] ** 2 + 2 * x[i] + 1)
+print(*x, '', *function, sep='\n')
+__________________________________________________
+ls1 = []
+for i in range(int(input())):
+    ls1.append(int(input()))
+for j in ls1:
+    if j !=min(ls1) and j != max(ls1):
+        print(j)
+
+ls = [int(input()) for _ in range(int(input()))]
+[print(i) for i in ls if i not in (max(ls), min(ls))]
+
+a = [int(input()) for i in range(int(input()))]
+for i in a:
+    if  min(a) < i < max(a):
+        print(i)
+
+n = int(input())
+c = []
+for _ in range(n):
+    c.append(int(input()))
+del c[c.index(max(c))]
+del c[c.index(min(c))]
+
+print(*c, sep='\n')
+__________________________________________
+ls1 = []
+for i in range(int(input())):
+    x = input()
+    if x not in ls1 :
+        ls1.append(x)
+print(*ls1, sep = "\n")
+
+s = []
+for _ in range(int(input())):
+    n = input()
+    if n in s:
+        continue
+    else:
+        s.append(n)
+print(*s, sep='\n')
+______________________________________
+ls1 = []
+for _ in range(int(input())):
+    s = input()
+    ls1.append(s)
+k=input()
+for i in ls1:
+    if k.lower() in  i.lower():
+        print(i)
+
+s = [input() for _ in range(int(input()))]
+word = input().lower()
+print(*[i for i in s if word in i.lower()], sep='\n')
+_______________________________
+ls1 = []
+ls2 = []
+ls0 = []
+for _ in range(int(input())):
+    n = int(input())
+    if n<0: 
+        ls1.append(n)
+    if n>0:
+        ls2.append(n)
+    if n==0:
+        ls0.append(n)
+print(*ls1, sep = "\n")
+print(*ls0, sep = "\n")
+print(*ls2, sep = "\n")
+
+n = int(input())
+x = [int(input()) for _ in range(n)]
+[print(i) for i in x if i < 0]
+[print(i) for i in x if i == 0]
+[print(i) for i in x if i > 0]
+______________________________________
+words = ['Мы', 'учим', 'язык', 'Python']
+print('*'.join(words))
+print('-'.join(words))
+print('?'.join(words))
+print('!'.join(words))
+print('*****'.join(words))
+print('abc'.join(words))
+print('123'.join(words))
+
+s = 'Python    is   the  most  powerful  language'
+words1 = s.split()
+words2 = s.split(' ')
+print(words1)
+print(words2)
+['Python', 'is', 'the', 'most', 'powerful', 'language']
+['Python', '', '', '', 'is', '', '', 'the', '', 'most', '', 'powerful', '', 'language']
+
+s=input()
+words = s.split()
+print("\n".join(words))
+______________________________________
+s = input().split()
+for i in range(len(s)): 
+    print(s[i][0], end = ".")
+
+print('.'.join([name[0] for name in input().split()]), end='.')
+__________________
+s = input().split("\\")
+print(*s, sep =«\n»)>>>>>>>>C:\Windows\System32\calc.exe
+C:
+Windows
+System32
+calc.exe
+_print(input().replace('\\', '\n'))
+
+ls = map(int,input().split())
+for i in ls:
+    print(i*"+")
+__________________________________
+n = input()
+ls = n.split(".")
+for i in ls:
+    if 255 < int(i)  or int(i) < 0: 
+        flag= False
+        break 
+    else:
+        flag = True 
+print("ДА") if flag == True else print("НЕТ")        
+___________________
+s = input()
+n = input()
+print(n.join(s))
+
+print(*list(input()), sep=input())
+__________________________
+count =0
+ls = input().split()
+for i in range(len(ls)):
+    for j in range(i+1, len(ls)):
+        if ls[i]==ls[j]:
+            count+=1
+print(count)
+
+a = input().split()
+s = 0
+for i in range(len(a) - 1):
+    s += a[i + 1:].count(a[i])
+print(s)
+______________________________
+numbers = [8, 9, 10, 11]
+numbers[1] = 17
+numbers.extend([4,5,6])
+del numbers[0]
+numbers*=2
+numbers.insert(3,25)
+print(numbers)
+_______________________________меняет местами минимальный и максимальный элемент этого списка.
+ls = list(map(int,input().split()))
+x = ls.index(min(ls))
+y = ls.index(max(ls))
+ls[x], ls[y]=ls[y],ls[x]
+print(*ls)
+______________________________________
+ls = list(input().lower().split())
+count=0
+for i in ls:
+    if i == "a" or i =="an" or i == "the":
+        count+=1
+print("Общее количество артиклей:", count )
+
+s = input().split()
+print(f"Общее количество артиклей: {s.count('a') + s.count('an') + s.count('the')}")
+________________________________
+ls = list(map(int,input().split()))
+ls.sort()
+print(*ls)
+ls.sort(reverse = True)
+print(*ls)
+
+s = sorted(int(i) for i in input().split())
+print(*s)
+print(*s[::-1])
+
+n = input().split()
+n.sort(key=int)
+print(*n)
+n.sort(reverse=True, key=int)
+print(*n)
+
+n = []
+for i in input().split():
+    n.append(int(i))
+
+l = [int(i) for i in input().split()]
+_________________________________
+n = []
+for j in input().split():
+    n.extend(j)
+count = 0
+con = 0
+x = "("
+y = ")"
+for i in n:
+    if i == x :
+        count+=1
+    if i == y:
+        con+=1
+if count==con:
+    print("YES")
+else:
+    print("NO")
+
+s = input()
+while '()' in s:
+    s = s.replace('()', '')
+print('NO' if s else 'YES')
+
+a = input()
+print('YES' if a.count('(') == a.count(')') else 'NO')
+______________________________________
+keywords = ['False', 'True', 'None', 'and', 'with', 'as', 'assert', 'break’]
+new_keywords = [ i[1:] for i in keywords]
+print(new_keywords)
+
+lengths = [len(i) for i in keywords]
+print(lengths)
+
+new_keywords = [i for i in keywords if len(i)>=5] 
+print(new_keywords)
+___________________________________
+palindromes = [ i for i in range(100,1001) if i % 10 == i // 100]
+print(palindromes) #906 step
+
+palindromes = [int(a+b+a) for a in '123456789' for b in '0123456789']
+print(palindromes)# 104 step
+
+palindromes = [i*100+j*10+i for i in range(1,10) for j in range(10)]
+print(palindromes) #104 step
+_____________________________________
+square =[i**2 for i in range(1,int(input())+1)]
+print(*square, sep = "\n")
+
+print(*[(m ** 2) for m in range(1, int(input())+1)], sep='\n')
+_____________________________________
+kubos = [int(c)**3 for c in input().split()]
+print(*kubos)
+___________________________
+print(*[c for c in input().split()], sep = "\n")
+______________________________________
+print(*[i for i in input() if "0"<=i<="9"],sep ="")
+
+print(*(i for i in input() if i.isdigit()), sep="")
+
+print(''.join([i for i in input() if i.isdigit()]))
+
+print(*[i for i in input() for j in i if ord("0") <= ord(j) <= ord("9")], sep="")
+____________________________________
+print(*[i**2 for i in map(int,input().split()) if   i%2 ==0 and (i**2)%10 != 4 ], sep = " ")
+__________________________________bubble sort
+a = [17, 24, 91, 96, 67, -27, 79, -71, -71, 58, 48, 88, 88, -16, -78, 96, -76, 56, 92, 1, 32, -17, 36, 88, -61, -97, -37, -84, 50, 47, 94, -6, 52, -76, 93, 14, -32, 98, -65, -16, -9, -68, -20, -40, -71, 93, -91, 44, 25, 79, 97, 0, -94, 7, -47, -96, -55, -58, -78, -78, -79, 75, 44, -56, -41, 38, 16, 70, 17, -17, -24, -83, -74, -73, 11, -26, 63, -75, -19, -13, -51, -74, 21, -8, 21, -68, -66, -84, -95, 78, 69, -29, 39, 38, -55, 7, -11, -26, -62, -84]
+n = len(a)
+swap = True    # задаём сигнальную метку
+for i in range(n - 1):
+    if swap == False:    # если по окончании внешнего цикла сигнальная метка приняла значение False, т.е. ни одного обмена не было произведено, тогда программа прерывается
+        break  
+    for j in range(n - i - 1):
+        if a[j] > a[j + 1]:
+            a[j], a[j + 1] = a[j + 1], a[j]
+
+            swap = True     # если в данном внутреннем цикле была произведена хотя бы одна перестановка во внутреннем цикле, сигнальная метка принимает значение True
+        else:
+            False           # если в данном внутреннем цикле не было произведено ни одной перестановки, сигнальная метка сохраняет значение False
+print(a)
+
+n = len(a)
+for i in range(n - 1):
+    done = True
+    for j in range(n - i - 1):
+        if a[j] > a[j + 1]:
+            a[j], a[j + 1], done = a[j + 1], a[j], False
+    if done:
+        break
+print(a)
+
+n = len(a)
+for i in range(n - 1):
+    counter = 0
+    for j in range(n - i - 1):
+        if a[j] > a[j + 1]:
+            a[j], a[j + 1] = a[j + 1], a[j]
+            counter += 1
+    if counter == 0:
+        break
+print(a)
+______________________________
+list_ = [int(i) for i in input().split()]
+count = 0
+for i in range(1, len(list_)):
+    if list_[i] > list_[i-1]:
+        count +=1
+print(count)
+________________________________________
+a = [1, 7, -3, 9, 0, -67, 34, 12, 45, 1000, 6,  8, -2, 99]
+n = len(a)
+print('Начинаем цикл перебора всех элементов списка, начиная со второго (неотсортированный список)')
+for i in range(1, n):
+    print(a, i, 'итерация: a[i] =', a[i])
+    elem = a[i]  # первый элемент из неотсортированной части списка
+    print('Запоминаем проверяемый элемент списка в доп память - elem = a[i] =', a[i])
+    j = i
+    if a[j - 1] <= elem:
+        print(f'В while не заходим, тк проверяемое число ({a[i]}) больше предыдущего ({a[i - 1]})')
+    while j >= 1 and a[j - 1] > elem:
+        print(f'while: сравниваем индекс = {j}: на место a[j] = {a[j]} записываем число {a[j - 1]}, и получаем', end=' ')
+        a[j] = a[j - 1]
+        print(a)
+        j -= 1
+    print(f'Извлекаем из доп памяти elem = {elem} в индекс {j}')    
+    a[j] = elem
+
+print(a)
+______________________Напишите программу, которая удаляет из нее все символы с индексами кратными 3, то есть символы с индексами 0, 3, 6, ....
+s = input()
+for c in range(len(s)):
+    if c%3 !=0:
+        print(s[c], end ="")
+
+s = list(input())
+del s[0::3]
+print(*s, sep='')
+_________________________________
+На вход программе подается строка текста в которой буква «h» встречается как минимум два раза. Напишите программу, которая возвращает исходную строку и переворачивает последовательность символов, заключенную между первым и последним вхождением буквы «h».
+s = input()
+print(s[: s.find("h")] + s[s.rfind("h"): s.find("h"): -1] + s[s.rfind("h"):])
+l, r = n.find('h'), n.rfind('h')
+print(n[:l]+n[r:l:-1]+n[r:])
+______________________________
+a = [78, -32, 5, 39, 58, -5, -63, 57, 72, 9, 53, -1, 63, -97, -21]
+n = len(a)
+for i in range(n):
+    for j in range(i, n):
+        if a[i] > a[j]:
+            a[i], a[j] = a[j], a[i]
+print(a)
+_____________________________________
+ls1 = [int(i) for i in input().split()]
+ls2 = [int(i) for i in input().split()]
+total =[]
+for i in range(len(ls1)):
+      total.append(ls1[i] + ls2[i]) 
+print(*total)
+
+my_list = [a[i] + b[i] for i in range(len(a))]
+_________________________________
+ls1 = [i for i in input().split()]
+ls2 = []
+for j in ls1:
+    ls2.append(int(j))         
+print("+".join(ls1),"=",sum(ls2), sep ="")
+
+n = [int(i) for i in input().split()]
+print(*n, sep='+', end='=')
+print(sum(n))
+
+numbers = [int(number) for number in input().split()]
+print(*numbers, sep='+', end=f'={sum(numbers)}')
+_______________________
+ls1 = [len(i) for i in input().split()]
+print(max(ls1))
+___________________________________
+ls = input().split()
+for i in range(len(ls)):
+    a = ls[i][1:]
+    ls[i] = ls[i][0]
+    a += ls[i]
+    print(a, end="ки ")
+
+print(*[i[1:] + i[0] + "ки"for i in input().split()])
+____________________________
+n = int(input())
+li = []
+for _ in range(n):
+    li.append(input())
+index = int(input())    
+res = ''
+for s in li:
+    if len(s) >= index:
+        res += s[index - 1]
+print(res)
+
+
+data = [input() for i in range(int(input()))]
+k = int(input())
+for i in data:
+    if len(i) >= k:
+        print(i[k - 1], end='')
+
+n = int(input())
+l = []
+for i in range(n):
+    l.append(input())
+num = int(input())
+for i in l:
+    if len(i) >= num:
+        print(i[num - 1], end='')
+
+n = int(input())
+a = [input() for _ in range(n)]
+k = int(input())
+for i in a:
+    print(i[k-1:k], end="")
+_______________________
+string = input()
+price = 60 * len(string)
+print(f'{price // 100} р. {price % 100} коп.')
+_______________________________________
+n = input()
+if len(n)==5:
+    print(int(n[::-1]))
+else:
+    print(int(n[0]+n[:-6:-1]))
+
+s = input()
+print(int(s[:-5] + s[-5:][::-1]))
+запись s[-5::-1] означает: сделай срез, начиная с -5 элемента по последний двигаясь в сторону начала строки. Естественно вы никогда не достигните конца строки двигаясь к началу. А s[-5:][::-1] сначала берет срез от -5 по конечный элемент, а уже потом переворачивает результат. функция int() убирает лишние нули
+____________________________
+print(f'{int(input()):,}')
+1000000
+1,000,000
+
+num = input()
+for idx in range(len(num) - 3, 0, -3):
+    num = num[:idx] + ',' + num[idx:]
+print(num)
+
+a = input()[: : -1]
+print(",".join([a[ i: i + 3] for i in range(0, len(a), 3)])[ : : -1])
+_______________________
+ls = [int(i) for i in input().split()]
+ls1=[]
+for i in ls:
+    if i not in ls1:
+        ls1.append(i)
+print(len(ls1))
+
+numbers = input().split()
+counter = 1
+for i in range(len(numbers) - 1):
+    if numbers[i] != numbers[i + 1]:
+        counter += 1
+print(counter) 
+_____________________Тимур загадал число от 1
+n. За какое наименьшее количество вопросов (на которые Тимур отвечает "больше" или "меньше") Руслан может гарантированно угадать число Тимура?
+from math import log2, ceil
+n = int(input())
+x = log2(n)
+y = ceil(x)
+print(y)
+n = int(input())
+for i in range(n):
+    if 2**i >= n:
+        print(i)
+        break
+def ugad(n):
+    total=0
+    while n//2 > 0:
+        n -= n//2
+        total +=1
+    return total
+ n=int(input())
+print(ugad(n))
+
+left = 1
+right = int(input())
+count = 0
+while right > left :
+ middle = (right + left) // 2 
+ count += 1
+ right = middle
+print(count)
+
+num = int(input())
+a = 0
+while num > 1:
+    num = num / 2
+    a += 1
+print(a)
+__________________________________
+n = int(input())
+x = [int(input()) for i in range(n)]
+suma = int(input())
+flag = False
+for i in range(n):
+    for j in range(n):
+        if i != j:
+            if x[i]*x[j] == suma:
+                flag = True
+                break
+            else:
+                continue
+print("ДА") if flag ==True else print("НЕТ")
+
+# вводим с клавиатуры количество чисел
+n = int(input())
+# создаём пустой список чисел
+numbers = []
+# заполняем список числами с клавиатуры
+for _ in range(n):
+    numbers.append(int(input()))
+ # вводим с клавиатуры число, которое хотим проверить на то,
+# является ли оно произведением каких-то двух чисел из списка
+product = int(input())
+# вводим два указателя - на крайнее левое и правое число в списке
+# под указателями подразумеваются переменные 
+# в которых хранятся номера индеков элементов списка
+left = 0
+right = len(numbers) - 1
+# сортируем список чисел по возрастанию
+numbers.sort()
+# делаем итоговый ответ равным НЕТ
+is_product = 'НЕТ'
+# пока указатели указывают на разные элементы списка
+while left != right:
+    # если произведение первого и последнего чисел в списке
+    # больше, чем число, которое проверяем
+    if numbers[left] * numbers[right] > product:
+        # сдвигаем правый указатель левее по списку
+        right -= 1
+    # иначе, если произведение первого и последнего чисел в списке
+    # меньше, чем число, которое проверяем
+    elif numbers[left] * numbers[right] < product:
+        # сдвигаем левый указатель правее по списку
+        left += 1
+    # во всех остальных случаях (произведение равно числу)
+    else:
+        # меняем итоговый ответ на ДА
+        is_product = 'ДА'
+        # прерываем цикл досрочно
+        break
+# выводим итоговый ответ        
+print(is_product)
+_____________________
+timur, ryslan = input(), input()
+if ryslan == timur:
+    print("ничья")
+elif timur=="камень" and ryslan=="ножницы" or timur == "бумага"  and  ryslan== "камень" or timur =="ножницы" and ryslan== "бумага"  :
+    print("Тимур")
+else:
+    print("Руслан")
+____________________________Напишите программу, которая меняет местами соседние элементы списка 
+lst = [int(i) for i in input().split()]
+for i in range(0, len(lst)-1, 2):
+    lst[i +1], lst[i] = lst[i], lst[i + 1]
+print(*lst)
+
+s = list(map(int, input().split()))
+s[:-1:2], s[1::2] = s[1::2], s[:-1:2]
+print(*s)
+______________________________________
+my_list = [[0], [1, 2], [3, 4, 5]]
+print(my_list)
+print(my_list[0])
+print(my_list[1])
+print(my_list[2])
+print(len(my_list))
+                        indexasia
+my_list = ['Python', [10, 20, 30], ['Beegeek', 'Stepik!']]
+print(my_list[0][2])       # индексирование строки 'Python'
+print(my_list[1][1])       # индексирование списка [10, 20, 30]
+print(my_list[2][-1])      # индексирование списка ['Beegeek', 'Stepik!']
+print(my_list[2][-1][-1])  # индексирование строки 'Stepik!'
+
+total = 0
+my_list = [[0], [1, 2], [3, 4, 5], [], [10, 20, 30]]
+for li in my_list:
+    total += len(li)
+print(total)
+
+list1 = [10, 20, [300, 400, [5000, 6000, 7000], 500], 30, 40]
+____________________________
+list1 = [10, 20, [300, 400, [5000, 6000], 500], 30, 40]
+for i in enumerate(list1):
+    print(i)# dla raspechatyvania indexov
+
+list1[2][2].append(7000)
+print(list1)
+__________________
+list1 = ['a', 'b', ['c', ['d', 'e', ['f', 'g'], 'k'], 'l'], 'm', 'n']
+sub_list = ['h', 'i', 'j']
+list1[2][1][2].extend(sub_list)
+print(list1)
+_________________________
+list1 = [[1, 7, 8], [9, 7, 102], [102, 106, 105], [100, 99, 98, 103], [1, 2, 3]]
+for li in list1:
+    li.reverse()
+print(list1)
+
+[x.reverse() for x in list1]
+___________________________
+list1 = [[1, 7, 8], [9, 7, 102], [102, 106, 105], [100, 99, 98, 103], [1, 2, 3]]
+total = 0
+counter = 0
+for li in list1:
+    counter += sum(li)
+    total += len(li)
+print(counter/total)
+
+total = sum([sum(i) for i in list1])
+counter = sum([len(i) for i in list1])
+
+unpacked_list1 = [j for i in list1 for j in i]
+total = sum(unpacked_list1)
+counter = len(unpacked_list1)
+
+list2 = sum(list1, [])
+print(sum(list2) / len(list2))
+________________________________________чтобы он выводил один общий максимальный элемент среди всех элементов вложенных списков
+list1 = [[1, 7, 8], [9, 7, 102], [6, 106, 105], [100, 99, 98, 103], [1, 2, 3]]
+maximum = -1
+for li in list1:
+    if max(li) > maximum:
+        maximum = max(li)
+print(maximum)
+
+mx = max([max(i) for i in list1])
+
+maximum = max(map(max, list1))
+
+list2 = []
+for i in list1:
+    list2.extend(i)
+print(max(list2)
+
+maximum = -1
+for i in list1:
+    i.append(maximum)
+    maximum = max(i)
+print(maximum)
+________________________________
+Дана строка текста, состоящая из букв русского алфавита "О" и "Р". Буква "О" – соответствует выпадению Орла, а буква "Р" – соответствует выпадению Решки. Напишите программу, которая подсчитывает наибольшее количество подряд выпавших Решек.
+ls = [i for i in input().split("О")]
+print(max(map(len, ls)))
+__________________________________
+list_a=list(map(int,input().split()))
+r=int(input())
+if list_a.count(r) == 0:
+    print(None)
+for i in range(len(list_a)):
+    if list_a[i] == r:
+        print(i, end = " ")
+
+s = input().split(' ')
+sub = input() 
+print(*([i for i, x in enumerate(s) if x == sub] or ['None']), sep=' ')
+
+nums, num = input().split(), input()
+res = [i for i, el in enumerate(nums) if el == num]
+print(*res or [None])
+
+st0, st1 = input(), input()
+iLs = [i for i, e in enumerate(st0.split()) if e == st1]
+print(*iLs) if len(iLs) > 0 else print("None»)# elli spisok pyst
+
+s = [int(x) for x in input().split()]
+n = int(input())
+if n in s:
+    for i in range(len(s)):
+        if s[i] == n:
+            print(i, end=' ')
+else:
+    print('None')
+_____________________	Используя метод split и join строки.
+Используя модуль re работы с регулярными выражениями(попробуйте сделать так, чтобы пробелы в начале и конце строки обрабатывались правильно).
+list_s = [i for i in input().split()]
+print("_".join(list_s))
+
+print(*input().split(), sep="_")
+
+import re
+print(re.sub(r'\b(\s+)\b', '_', input()))
+
+print('_'.join(input().split()))
+sqlvector = [[1, 2, 3], [4, 5, 6], [7, 8, 9], [10, 11, 12], [13, 14, 15], [16, 17, 18]]
+print(sum(vector,[]))
+____________________
+from operator import mul
+
+result = list(map(mul, ['a', 'b', 'c'], [1, 2, 3]))
+print(result) ['a', 'bb', 'ccc']
+_________________
+from operator import add
+from functools import reduce
+
+result = reduce(add, [[1, 2, 3], [4, 5, 6], [7, 8, 9]])
+print(result)  >>>[1, 2, 3, 4, 5, 6, 7, 8, 9]
+
+iterable = ['1', '2', '3']
+result = list(map(len, iterable))
+print(result)>>>> [1, 1, 1]
+
+iterable = [[1], [2], [3]]
+result = list(map(len, iterable))
+print(result)>>>>[1, 1, 1]
+
+def is_a_student(score):
+    return score > 75
+
+def is_a_student(score):
+    return score > 75
+scores = [66, 90, 68, 59, 76, 60, 88, 74, 81, 65, 75]
+over_75 = list(filter(is_a_student, scores))
+print(over_75)>>>>[90, 76, 88, 81]
+
+def filter_vowels(letter):
+    return letter in 'aeiou'
+letters = ['a', 'b', 'd', 'e', 'i', 'j', 'o']
+filtered_vowels = filter(filter_vowels, letters)
+print(*filtered_vowels)>>>a e i o
+
+random_list = [1, 'a', 0, False, True, '0', 7, '']
+filtered_list = list(filter(None, random_list))
+print(filtered_list)>>>[1, 'a', True, '0', 7]
+
+listA = [2, 3, 4]
+listB = [3, 2, 1]
+Встроенная функция pow() принимает два аргумента a и b и возвращает значение a**b
+result = sum(map(pow, listA, listB))
+print(result)>>>21
+
+def func(elem1, elem2, elem3):
+    return elem1 + elem2 + elem3
+numbers1 = [1, 2, 3, 4, 5]
+numbers2 = [10, 20, 30, 40, 50]
+numbers3 = [100, 200, 300, 400, 500]
+new_numbers = list(map(func, numbers1, numbers2, numbers3))  #  преобразуем итератор в список
+print(new_numbers)>>>>[111, 222, 333, 444, 555]
+
+def func(elem):
+    return elem >= 0
+numbers = [-1, 2, -3, 4, 0, -20, 10]
+positive_numbers = list(filter(func, numbers))  #  преобразуем итератор в список
+print(positive_numbers)>>>>[2, 4, 0, 10]
+
+from functools import reduce
+def func(a, b):
+    return a + b
+numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+total = reduce(func, numbers, 0)   # в качестве начального значения 0
+print(total)
