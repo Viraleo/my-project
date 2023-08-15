@@ -23,6 +23,3 @@ st.dataframe(bike_data)
 bike_data["hour"]=bike_data.index.hour
 bike.rename(columns={'count': "total_count"}, inplace= True)
 
-fig, ax = plt.subplots()
-ax.plot(bike_data['hour'])
-st.pyplot(fig)
