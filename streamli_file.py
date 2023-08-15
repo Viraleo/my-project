@@ -1,3 +1,5 @@
+pip install --upgrade streamlit matplotlib
+
 import streamlit as st
 import pandas as pd
 import numpy as np
