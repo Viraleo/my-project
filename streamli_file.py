@@ -6,7 +6,7 @@ import numpy as np
 st.title("My first streamlit app")
 st.header("This is about bike")
 
-st.sidebar.title (Here's going to be some information")
+st.sidebar.title ("Here's going to be some information")
 
 def load_dataset(data_link):
     dataset = pd.read_csv(data_link)
