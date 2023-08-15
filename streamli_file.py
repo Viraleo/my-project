@@ -3,8 +3,8 @@ import pandas as pd
 import numpy as np
 
 
-st.title("may first streamlit app")
-st.header (This is about bike")
+st.title("My first streamlit app")
+st.header("This is about bike")
 
 st.sidebar.title (Here's going to be some information")
 
